@@ -30,6 +30,8 @@ body {
   line-height: 1.6;
 }
 
+/* HEADER */
+
 header {
   background: var(--navy);
   color: white;
@@ -62,36 +64,29 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* FIXED HOMEPAGE BANNER */
+/* SMALLER BANNER */
 
 .hero {
-  position: relative;
+  background: #eaf3fa;
+  padding: 25px 5% 35px;
+  text-align: center;
+}
+
+.banner-image {
+  display: block;
   width: 100%;
-  aspect-ratio: 1648 / 928;
-  background-image: url("research-library-banner.png");
-  background-position: center;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-color: #0b4e93;
-  padding: 0;
+  max-width: 640px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px #102b4620;
 }
 
-/* Invisible clickable area over banner button */
-
-.hero-click {
-  position: absolute;
-  left: 33%;
-  top: 77%;
-  width: 34%;
-  height: 9%;
-  border-radius: 100px;
-  cursor: pointer;
+.hero .btn {
+  margin-top: 22px;
 }
 
-.hero-click:focus-visible {
-  outline: 3px solid #ffcc33;
-  outline-offset: 3px;
-}
+/* GENERAL SECTIONS */
 
 section {
   padding: 55px 7%;
@@ -258,6 +253,10 @@ dialog::backdrop {
   section {
     padding: 40px 6%;
   }
+
+  .hero {
+    padding: 15px 4% 25px;
+  }
 }
 </style>
 </head>
@@ -282,22 +281,25 @@ dialog::backdrop {
 
 <main>
 
-<!-- BANNER WITHOUT DUPLICATE TEXT -->
+<!-- SMALL BANNER -->
 
-<section class="hero" id="home"
-  aria-label="STE Research E-Library homepage banner">
+<section class="hero" id="home">
 
-  <a
-    class="hero-click"
-    href="#library"
-    aria-label="Explore Research Library">
+  <img
+    class="banner-image"
+    src="research-library-banner.png"
+    alt="STE Research E-Library Banner">
+
+  <a class="btn" href="#library">
+    Explore Research Library
   </a>
 
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 
 <section id="about">
+
   <h2 class="section-title">
     Welcome to Our Research Archive
   </h2>
@@ -308,10 +310,10 @@ dialog::backdrop {
   </p>
 
   <p>
-    The STE Research E-Library preserves and
-    showcases approved student scientific studies.
-    It promotes research literacy, academic integrity,
-    and evidence-based learning.
+    The STE Research E-Library preserves
+    and showcases approved student scientific
+    studies. It promotes research literacy,
+    academic integrity, and evidence-based learning.
   </p>
 
   <div class="stats">
@@ -334,7 +336,7 @@ dialog::backdrop {
   </div>
 </section>
 
-<!-- RESEARCH LIBRARY -->
+<!-- LIBRARY -->
 
 <section id="library">
 
@@ -353,8 +355,7 @@ dialog::backdrop {
       id="search"
       type="search"
       placeholder="Search research studies..."
-      aria-label="Search research studies"
-    >
+      aria-label="Search research studies">
 
     <select id="category"
       aria-label="Research category">
@@ -378,7 +379,7 @@ dialog::backdrop {
 
 </section>
 
-<!-- RESEARCH SUBMISSION -->
+<!-- SUBMISSION -->
 
 <section class="submit-section" id="submit">
 
@@ -418,17 +419,11 @@ dialog::backdrop {
 
 <footer>
   <strong>STE Research E-Library</strong>
-
-  <p>
-    Dasmariñas East Integrated High School
-  </p>
-
+  <p>Dasmariñas East Integrated High School</p>
   <small>
     A Digital Archive of Student Scientific Studies
   </small>
 </footer>
-
-<!-- RESEARCH DETAILS POPUP -->
 
 <dialog id="details">
 
@@ -445,7 +440,7 @@ dialog::backdrop {
 
 <script>
 
-/* FIVE RESEARCH STUDIES */
+/* RESEARCH DATABASE */
 
 const studies = [
 
@@ -457,11 +452,8 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     keywords: [
-      "lemongrass",
-      "oregano",
-      "candle",
-      "mosquito",
-      "repellent"
+      "lemongrass", "oregano", "candle",
+      "mosquito", "repellent"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
@@ -475,11 +467,8 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     keywords: [
-      "coconut",
-      "banana",
-      "paper",
-      "adhesive",
-      "sustainable"
+      "coconut", "banana", "paper",
+      "adhesive", "sustainable"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
@@ -493,11 +482,8 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     keywords: [
-      "cockroach",
-      "pineapple",
-      "rice hulls",
-      "turmeric",
-      "pest control"
+      "cockroach", "pineapple", "rice hulls",
+      "turmeric", "pest control"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
@@ -511,11 +497,8 @@ const studies = [
     program: "STE",
     category: "Engineering and Technology",
     keywords: [
-      "flood",
-      "drainage",
-      "water flow",
-      "flood risk",
-      "MO-Drain"
+      "flood", "drainage", "water flow",
+      "flood risk", "MO-Drain"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
@@ -529,11 +512,8 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     keywords: [
-      "bougainvillea",
-      "wood ash",
-      "soil",
-      "microbial diversity",
-      "soil fertility"
+      "bougainvillea", "wood ash", "soil",
+      "microbial diversity", "soil fertility"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
@@ -541,7 +521,7 @@ const studies = [
 
 ];
 
-/* SEARCH AND DISPLAY FUNCTIONS */
+/* WEBSITE FUNCTIONS */
 
 const researchList =
   document.getElementById("researchList");
@@ -560,7 +540,6 @@ const details =
 
 function makeElement(tag, value, className) {
   const el = document.createElement(tag);
-
   el.textContent = String(value ?? "");
 
   if (className) {
@@ -577,15 +556,10 @@ function setup() {
   ].sort();
 
   categories.forEach(name => {
-
-    const option =
-      document.createElement("option");
-
+    const option = document.createElement("option");
     option.value = name;
     option.textContent = name;
-
     category.appendChild(option);
-
   });
 
   document.getElementById("total").textContent =
@@ -618,7 +592,6 @@ function renderStudies() {
         study.category === category.value) &&
       (!level.value ||
         study.program === level.value);
-
   });
 
   researchList.replaceChildren();
@@ -660,7 +633,6 @@ function renderStudies() {
 
     card.appendChild(button);
     researchList.appendChild(card);
-
   });
 
   document.getElementById("empty").style.display =
@@ -737,26 +709,16 @@ function showDetails(study) {
         "meta"
       )
     );
-
   }
 
   details.showModal();
 }
 
-search.addEventListener(
-  "input",
-  renderStudies
-);
+search.addEventListener("input", renderStudies);
 
-category.addEventListener(
-  "change",
-  renderStudies
-);
+category.addEventListener("change", renderStudies);
 
-level.addEventListener(
-  "change",
-  renderStudies
-);
+level.addEventListener("change", renderStudies);
 
 document.getElementById("closeDialog")
   .addEventListener("click", () => details.close());
