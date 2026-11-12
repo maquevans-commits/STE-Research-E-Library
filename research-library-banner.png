@@ -1,12 +1,26 @@
-.hero {
-  background-image:
-    linear-gradient(
-      rgba(16,43,70,0.35),
-      rgba(16,43,70,0.45)
-    ),
-    url("research-library-banner.png");
 
-  background-size: cover;
+/* SMALLER HOMEPAGE BANNER */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1648 / 928;
+  max-height: 380px;
+  background-image: url("research-library-banner.png");
   background-position: center;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-color: #0b4e93;
+  padding: 0;
+}
+
+.hero-click {
+  position: absolute;
+  left: 33%;
+  top: 77%;
+  width: 34%;
+  height: 9%;
+  border-radius: 100px;
+  cursor: pointer;
 }
