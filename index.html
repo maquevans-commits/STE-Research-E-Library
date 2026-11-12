@@ -14,13 +14,19 @@
   --muted: #607080;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f5f8fb;
   color: var(--navy);
+  background: #f5f8fb;
   line-height: 1.6;
 }
 
@@ -52,62 +58,44 @@ nav a {
   margin-left: 18px;
 }
 
-nav a:hover { text-decoration: underline; }
+nav a:hover {
+  text-decoration: underline;
+}
 
-/* SCHOOL BANNER */
+/* FIXED HOMEPAGE BANNER */
+
 .hero {
-  min-height: 420px;
-  background-image:
-    linear-gradient(
-      rgba(16,43,70,0.35),
-      rgba(16,43,70,0.45)
-    ),
-    url("research-library-banner.png");
-  background-size: cover;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1648 / 928;
+  background-image: url("research-library-banner.png");
   background-position: center;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  color: white;
-  padding: 100px 7%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: #0b4e93;
+  padding: 0;
 }
 
-.hero h1 {
-  font-size: clamp(30px,5vw,50px);
-  margin: 0 0 12px;
-  text-shadow: 0 2px 8px #0008;
-}
+/* Invisible clickable area over banner button */
 
-.hero p {
-  max-width: 700px;
-  margin: 0 auto 22px;
-  text-shadow: 0 2px 6px #0009;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 22px;
-  background: var(--teal);
-  color: white;
-  border: 0;
-  border-radius: 7px;
-  text-decoration: none;
+.hero-click {
+  position: absolute;
+  left: 33%;
+  top: 77%;
+  width: 34%;
+  height: 9%;
+  border-radius: 100px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
 }
 
-.btn:hover { background: #06666a; }
-
-.hero .btn {
-  background: white;
-  color: var(--navy);
+.hero-click:focus-visible {
+  outline: 3px solid #ffcc33;
+  outline-offset: 3px;
 }
 
-section { padding: 55px 7%; }
+section {
+  padding: 55px 7%;
+}
 
 .section-title {
   font-size: 28px;
@@ -119,22 +107,26 @@ section { padding: 55px 7%; }
   margin-top: 0;
 }
 
-.stats, .cards {
+.stats,
+.cards {
   display: grid;
   grid-template-columns:
-    repeat(auto-fit,minmax(240px,1fr));
+    repeat(auto-fit, minmax(240px, 1fr));
   gap: 18px;
   margin-top: 25px;
 }
 
-.stat, .card {
+.stat,
+.card {
   background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 3px 12px #102b4612;
 }
 
-.stat { text-align: center; }
+.stat {
+  text-align: center;
+}
 
 .stat strong {
   display: block;
@@ -142,7 +134,9 @@ section { padding: 55px 7%; }
   color: var(--teal);
 }
 
-.card h3 { margin-top: 12px; }
+.card h3 {
+  margin-top: 12px;
+}
 
 .tag {
   display: inline-block;
@@ -161,7 +155,8 @@ section { padding: 55px 7%; }
   margin: 25px 0;
 }
 
-input, select {
+input,
+select {
   padding: 13px;
   border: 1px solid #cbd5df;
   border-radius: 7px;
@@ -173,7 +168,8 @@ input, select {
   min-width: 220px;
 }
 
-#category, #level {
+#category,
+#level {
   flex: 1;
   min-width: 160px;
 }
@@ -183,7 +179,26 @@ input, select {
   font-size: 14px;
 }
 
-.card button { margin-top: 10px; }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: var(--teal);
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background: #06666a;
+}
+
+.card button {
+  margin-top: 10px;
+}
 
 #empty {
   display: none;
@@ -211,13 +226,15 @@ dialog {
   border: none;
   border-radius: 14px;
   padding: 30px;
-  width: min(650px,90vw);
+  width: min(650px, 90vw);
   max-height: 85vh;
   overflow: auto;
   box-shadow: 0 15px 50px #0004;
 }
 
-dialog::backdrop { background: #0009; }
+dialog::backdrop {
+  background: #0009;
+}
 
 .close {
   float: right;
@@ -227,7 +244,7 @@ dialog::backdrop { background: #0009; }
   cursor: pointer;
 }
 
-@media(max-width:600px) {
+@media (max-width: 600px) {
   header {
     justify-content: center;
     text-align: center;
@@ -238,9 +255,8 @@ dialog::backdrop { background: #0009; }
     font-size: 14px;
   }
 
-  .hero {
-    min-height: 300px;
-    padding: 60px 6%;
+  section {
+    padding: 40px 6%;
   }
 }
 </style>
@@ -266,19 +282,20 @@ dialog::backdrop { background: #0009; }
 
 <main>
 
-<section class="hero" id="home">
-  <h1>STE Research E-Library</h1>
-  <p>A Digital Archive of Student Scientific Studies</p>
-  <p>
-    Discover, explore, and share scientific research
-    conducted by student researchers.
-    Building a community of innovation,
-    curiosity, and discovery.
-  </p>
-  <a class="btn" href="#library">
-    Explore Research Library
+<!-- BANNER WITHOUT DUPLICATE TEXT -->
+
+<section class="hero" id="home"
+  aria-label="STE Research E-Library homepage banner">
+
+  <a
+    class="hero-click"
+    href="#library"
+    aria-label="Explore Research Library">
   </a>
+
 </section>
+
+<!-- ABOUT SECTION -->
 
 <section id="about">
   <h2 class="section-title">
@@ -286,17 +303,19 @@ dialog::backdrop { background: #0009; }
   </h2>
 
   <p class="subtitle">
-    A digital learning resource for STE and regular students.
+    A digital learning resource for STE
+    and regular students.
   </p>
 
   <p>
-    The STE Research E-Library preserves and showcases
-    approved student scientific studies. It promotes
-    research literacy, academic integrity, and
-    evidence-based learning.
+    The STE Research E-Library preserves and
+    showcases approved student scientific studies.
+    It promotes research literacy, academic integrity,
+    and evidence-based learning.
   </p>
 
   <div class="stats">
+
     <div class="stat">
       <strong id="total">0</strong>
       Research Studies
@@ -311,18 +330,25 @@ dialog::backdrop { background: #0009; }
       <strong>STE + Regular</strong>
       Student Access
     </div>
+
   </div>
 </section>
 
+<!-- RESEARCH LIBRARY -->
+
 <section id="library">
-  <h2 class="section-title">Research Library</h2>
+
+  <h2 class="section-title">
+    Research Library
+  </h2>
 
   <p class="subtitle">
-    Search research studies by title, author,
-    keyword, category, or school year.
+    Search research studies by title,
+    author, keyword, category, or school year.
   </p>
 
   <div class="filters">
+
     <input
       id="search"
       type="search"
@@ -330,15 +356,18 @@ dialog::backdrop { background: #0009; }
       aria-label="Search research studies"
     >
 
-    <select id="category" aria-label="Research category">
+    <select id="category"
+      aria-label="Research category">
       <option value="">All Categories</option>
     </select>
 
-    <select id="level" aria-label="Student program">
+    <select id="level"
+      aria-label="Student program">
       <option value="">All Student Programs</option>
       <option value="STE">STE</option>
       <option value="Regular">Regular</option>
     </select>
+
   </div>
 
   <div class="cards" id="researchList"></div>
@@ -346,9 +375,13 @@ dialog::backdrop { background: #0009; }
   <p id="empty">
     No matching research studies found.
   </p>
+
 </section>
 
+<!-- RESEARCH SUBMISSION -->
+
 <section class="submit-section" id="submit">
+
   <h2 class="section-title">
     Submit Your Research
   </h2>
@@ -360,18 +393,17 @@ dialog::backdrop { background: #0009; }
   </p>
 
   <p>
-    All submissions undergo teacher review and
-    approval before publication.
-    Obtain the necessary permission before
-    submitting student names or research documents.
+    All submissions undergo teacher review
+    and approval before publication.
+    Obtain permission before submitting
+    student names or research documents.
   </p>
 
   <a
     class="btn"
     href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
     target="_blank"
-    rel="noopener noreferrer"
-  >
+    rel="noopener noreferrer">
     Open Research Submission Folder
   </a>
 
@@ -379,39 +411,41 @@ dialog::backdrop { background: #0009; }
     Please follow your teacher's instructions
     when submitting research papers.
   </p>
+
 </section>
 
 </main>
 
 <footer>
   <strong>STE Research E-Library</strong>
-  <p>Dasmariñas East Integrated High School</p>
+
+  <p>
+    Dasmariñas East Integrated High School
+  </p>
+
   <small>
     A Digital Archive of Student Scientific Studies
   </small>
 </footer>
 
+<!-- RESEARCH DETAILS POPUP -->
+
 <dialog id="details">
+
   <button
     class="close"
     id="closeDialog"
-    aria-label="Close details"
-  >&times;</button>
+    aria-label="Close details">
+    &times;
+  </button>
 
   <div id="detailContent"></div>
+
 </dialog>
 
 <script>
 
-/*
-  RESEARCH DATABASE
-
-  Add new approved studies inside this array.
-  Each study has its own Google Drive PDF link.
-
-  Authors, years, and abstracts can be added
-  when verified information is available.
-*/
+/* FIVE RESEARCH STUDIES */
 
 const studies = [
 
@@ -445,8 +479,7 @@ const studies = [
       "banana",
       "paper",
       "adhesive",
-      "sustainable",
-      "paper bags"
+      "sustainable"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
@@ -464,8 +497,7 @@ const studies = [
       "pineapple",
       "rice hulls",
       "turmeric",
-      "pest control",
-      "eco-friendly"
+      "pest control"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
@@ -501,8 +533,7 @@ const studies = [
       "wood ash",
       "soil",
       "microbial diversity",
-      "soil fertility",
-      "acidic tropical soils"
+      "soil fertility"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
@@ -510,7 +541,7 @@ const studies = [
 
 ];
 
-/* WEBSITE FUNCTIONS */
+/* SEARCH AND DISPLAY FUNCTIONS */
 
 const researchList =
   document.getElementById("researchList");
@@ -527,13 +558,10 @@ const level =
 const details =
   document.getElementById("details");
 
-function safeText(value) {
-  return String(value ?? "");
-}
-
-function makeElement(tag, text, className) {
+function makeElement(tag, value, className) {
   const el = document.createElement(tag);
-  el.textContent = safeText(text);
+
+  el.textContent = String(value ?? "");
 
   if (className) {
     el.className = className;
@@ -549,10 +577,15 @@ function setup() {
   ].sort();
 
   categories.forEach(name => {
-    const option = document.createElement("option");
+
+    const option =
+      document.createElement("option");
+
     option.value = name;
     option.textContent = name;
+
     category.appendChild(option);
+
   });
 
   document.getElementById("total").textContent =
@@ -585,13 +618,16 @@ function renderStudies() {
         study.category === category.value) &&
       (!level.value ||
         study.program === level.value);
+
   });
 
   researchList.replaceChildren();
 
   filtered.forEach(study => {
 
-    const card = document.createElement("article");
+    const card =
+      document.createElement("article");
+
     card.className = "card";
 
     card.appendChild(
@@ -623,8 +659,8 @@ function renderStudies() {
     });
 
     card.appendChild(button);
-
     researchList.appendChild(card);
+
   });
 
   document.getElementById("empty").style.display =
@@ -643,19 +679,31 @@ function showDetails(study) {
   );
 
   content.appendChild(
-    makeElement("p", "Authors: " + study.authors)
+    makeElement(
+      "p",
+      "Authors: " + study.authors
+    )
   );
 
   content.appendChild(
-    makeElement("p", "School Year: " + study.year)
+    makeElement(
+      "p",
+      "School Year: " + study.year
+    )
   );
 
   content.appendChild(
-    makeElement("p", "Program: " + study.program)
+    makeElement(
+      "p",
+      "Program: " + study.program
+    )
   );
 
   content.appendChild(
-    makeElement("p", "Category: " + study.category)
+    makeElement(
+      "p",
+      "Category: " + study.category
+    )
   );
 
   content.appendChild(
@@ -689,6 +737,7 @@ function showDetails(study) {
         "meta"
       )
     );
+
   }
 
   details.showModal();
