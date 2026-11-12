@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STE Research E-Library | DEIHS</title>
+<style>
+:root {
+  --navy: #102b46;
+  --teal: #087e83;
+  --light: #edf7f8;
+  --white: #fff;
+  --muted: #607080;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--navy);
+  background: #f5f8fb;
+  line-height: 1.6;
+}
+header {
+  background: var(--navy);
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.brand { font-size: 20px; font-weight: bold; }
+.brand small {
+  display: block;
+  font-size: 12px;
+  font-weight: normal;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+}
+nav a:hover { text-decoration: underline; }
+/* Compact banner: full image visible without stretching or duplicated text */
+.hero {
+  background: #0b4e93;
+  text-align: center;
+  padding: 0;
+}
+.hero-banner {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: 0 auto;
+}
+.hero-action {
+  padding: 10px 15px 16px;
+  background: #0b4e93;
+}
+.hero-action .btn {
+  background: #fff;
+  color: var(--navy);
+}
+@media (max-width: 600px) {
+  .hero-banner { max-width: 100%; }
+}
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background: var(--teal);
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn:hover { background: #06666a; }
+.hero .btn {
+  background: white;
+  color: var(--navy);
+}
+section { padding: 55px 7%; }
+.section-title {
+  font-size: 28px;
+  margin: 0 0 8px;
+}
+.subtitle { color: var(--muted); margin-top: 0; }
+.stats, .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+.stat, .card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 3px 12px #102b4612;
+}
+.stat { text-align: center; }
+.stat strong {
+  display: block;
+  font-size: 34px;
+  color: var(--teal);
+}
+.card h3 { margin-top: 0; }
+.tag {
+  display: inline-block;
+  background: var(--light);
+  color: var(--teal);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0;
+}
+input, select {
+  padding: 13px;
+  border: 1px solid #cbd5df;
+  border-radius: 7px;
+  font: inherit;
+}
+#search { flex: 2; min-width: 220px; }
+#category, #level { flex: 1; min-width: 160px; }
+.meta { color: var(--muted); font-size: 14px; }
+.card button { margin-top: 10px; }
+#empty { display: none; color: var(--muted); }
+.submit-section {
+  background: var(--light);
+  text-align: center;
+}
+.submit-section p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 28px 15px;
+}
+dialog {
+  border: none;
+  border-radius: 14px;
+  padding: 30px;
+  width: min(600px,90vw);
+  max-height: 85vh;
+  overflow: auto;
+  box-shadow: 0 15px 50px #0004;
+}
+dialog::backdrop { background: #0009; }
+.close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+@media(max-width:600px) {
+  header { justify-content: center; text-align: center; }
+  nav a { margin: 0 8px; font-size: 14px; }
+  
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">
+    STE Research E-Library
+    <small>Dasmariñas East Integrated High School</small>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#library">Library</a>
+    <a href="#about">About</a>
+    <a href="#submit">Submit</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home" aria-label="STE Research E-Library homepage banner">
+  <img class="hero-banner" src="research-library-banner.png" alt="STE Research E-Library school banner featuring the school logo and scientific research illustrations">
+  <div class="hero-action">
+    <a class="btn" href="#library">Explore Research Library</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">Welcome to Our Research Archive</h2>
+  <p class="subtitle">
+    A digital learning resource for STE and regular students.
+  </p>
+  <p>
+    The STE Research E-Library preserves and showcases
+    approved student scientific studies. It promotes
+    research literacy, academic integrity, and
+    evidence-based learning.
+  </p>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="total">0</strong>
+      Research Studies
+    </div>
+    <div class="stat">
+      <strong id="categoriesCount">0</strong>
+      Research Categories
+    </div>
+    <div class="stat">
+      <strong>STE + Regular</strong>
+      Student Access
+    </div>
+  </div>
+</section>
+
+<section id="library">
+  <h2 class="section-title">Research Library</h2>
+  <p class="subtitle">
+    Search approved research by title, author, keyword,
+    category, or school year.
+  </p>
+
+  <div class="filters">
+    <input id="search" type="search"
+      placeholder="Search research studies...">
+
+    <select id="category">
+      <option value="">All Categories</option>
+    </select>
+
+    <select id="level">
+      <option value="">All Student Programs</option>
+      <option value="STE">STE</option>
+      <option value="Regular">Regular</option>
+    </select>
+  </div>
+
+  <div class="cards" id="researchList"></div>
+  <p id="empty">No matching research studies found.</p>
+</section>
+
+<section class="submit-section" id="submit">
+  <h2 class="section-title">Submit Your Research</h2>
+  <p>
+    Are you a student researcher? Share your completed
+    scientific study for possible inclusion in our
+    digital research archive.
+  </p>
+  <p>
+    All submissions undergo teacher review and approval
+    before publication. Obtain the necessary permission
+    before submitting student names or research documents.
+  </p>
+  <a class="btn" id="submitLink"
+     href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
+     target="_blank" rel="noopener noreferrer">
+    Open Research Submission Folder
+  </a>
+</section>
+</main>
+
+<footer>
+  <strong>STE Research E-Library</strong>
+  <p>Dasmariñas East Integrated High School</p>
+  <small>
+    A Digital Archive of Student Scientific Studies
+  </small>
+</footer>
+
+<dialog id="details">
+  <button class="close" id="closeDialog"
+    aria-label="Close details">&times;</button>
+  <div id="detailContent"></div>
+</dialog>
+
+<script>
+// ADD APPROVED RESEARCH HERE. Each entry needs its own Google Drive viewer link.
+// In Google Drive: Share > General access > Anyone with the link > Viewer.
+// Only publish papers and author details with the necessary permission.
+const studies = [
+  {
+    "id": 1,
+    "title": "Formulation and Efficacy of a Lemongrass and Oregano-Based Candle as a Natural Mosquito Repellent",
+    "authors": "Not provided",
+    "year": "Not provided",
+    "program": "STE",
+    "category": "Life Sciences",
+    "keywords": [
+      "lemongrass",
+      "oregano",
+      "mosquito",
+      "repellent"
+    ],
+    "abstract": "Abstract not yet provided.",
+    "pdfUrl": "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
+  },
+  {
+    "id": 2,
+    "title": "Utilizing Coconut (Cocos nucifera) Husk as Paper and Banana (Musa acuminata) as Adhesive for Sustainable Paper Bags",
+    "authors": "Not provided",
+    "year": "Not provided",
+    "program": "STE",
+    "category": "Environmental Science",
+    "keywords": [
+      "coconut",
+      "banana",
+      "paper bags",
+      "sustainability"
+    ],
+    "abstract": "Abstract not yet provided.",
+    "pdfUrl": "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=sharing"
+  },
+  {
+    "id": 3,
+    "title": "From Waste to Weapon: Developing an Eco-Friendly Cockroach Control Solution from Pineapple Peels (Ananas comosus), Rice Hulls (Oryza sativa L.), and Turmeric (Curcuma longa)",
+    "authors": "Not provided",
+    "year": "Not provided",
+    "program": "STE",
+    "category": "Life Sciences",
+    "keywords": [
+      "cockroach",
+      "pineapple",
+      "rice hulls",
+      "turmeric"
+    ],
+    "abstract": "Abstract not yet provided.",
+    "pdfUrl": "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=sharing"
+  },
+  {
+    "id": 4,
+    "title": "MO-Drain SySTEM: An Analysis on Flood Risk and Water Flow Dynamics",
+    "authors": "Not provided",
+    "year": "Not provided",
+    "program": "STE",
+    "category": "Engineering and Technology",
+    "keywords": [
+      "flood",
+      "drainage",
+      "water flow"
+    ],
+    "abstract": "Abstract not yet provided.",
+    "pdfUrl": "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=sharing"
+  },
+  {
+    "id": 5,
+    "title": "Assessing the Impact of Bougainvillea Wood Ash on Soil Microbial Diversity and Fertility in Acidic Tropical Soils",
+    "authors": "Not provided",
+    "year": "Not provided",
+    "program": "STE",
+    "category": "Environmental Science",
+    "keywords": ["bougainvillea", "wood ash", "soil", "microbial diversity", "fertility", "acidic tropical soils"],
+    "abstract": "Abstract not yet provided.",
+    "pdfUrl": "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
+  }
+];
+
+const researchList = document.getElementById("researchList");
+const search = document.getElementById("search");
+const category = document.getElementById("category");
+const level = document.getElementById("level");
+const details = document.getElementById("details");
+
+function safeText(value) {
+  return String(value ?? "");
+}
+
+function makeElement(tag, text, className) {
+  const el = document.createElement(tag);
+  el.textContent = safeText(text);
+  if (className) el.className = className;
+  return el;
+}
+
+function setup() {
+  const categories = [...new Set(
+    studies.map(s => s.category)
+  )].sort();
+
+  categories.forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    category.appendChild(option);
+  });
+
+  document.getElementById("total").textContent =
+    studies.length;
+
+  document.getElementById("categoriesCount").textContent =
+    categories.length;
+
+  renderStudies();
+}
+
+function renderStudies() {
+  const query = search.value.toLowerCase().trim();
+
+  const filtered = studies.filter(study => {
+    const searchable = [
+      study.title,
+      study.authors,
+      study.year,
+      study.category,
+      study.program,
+      ...study.keywords
+    ].join(" ").toLowerCase();
+
+    return searchable.includes(query) &&
+      (!category.value || study.category === category.value) &&
+      (!level.value || study.program === level.value);
+  });
+
+  researchList.replaceChildren();
+
+  filtered.forEach(study => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    card.appendChild(makeElement(
+      "span", study.category, "tag"
+    ));
+    card.appendChild(makeElement("h3", study.title));
+    card.appendChild(makeElement(
+      "p", study.authors, "meta"
+    ));
+    card.appendChild(makeElement(
+      "p",
+      `${study.program} | School Year: ${study.year}`,
+      "meta"
+    ));
+
+    const button = makeElement("button", "View Details", "btn");
+    button.type = "button";
+    button.addEventListener("click", () => {
+      showDetails(study);
+    });
+
+    card.appendChild(button);
+    researchList.appendChild(card);
+  });
+
+  document.getElementById("empty").style.display =
+    filtered.length ? "none" : "block";
+}
+
+function showDetails(study) {
+  const content = document.getElementById("detailContent");
+  content.replaceChildren();
+
+  content.appendChild(makeElement("h2", study.title));
+  content.appendChild(makeElement(
+    "p", `Authors: ${study.authors}`
+  ));
+  content.appendChild(makeElement(
+    "p", `School Year: ${study.year}`
+  ));
+  content.appendChild(makeElement(
+    "p", `Program: ${study.program}`
+  ));
+  content.appendChild(makeElement(
+    "p", `Category: ${study.category}`
+  ));
+  content.appendChild(makeElement("h3", "Abstract"));
+  content.appendChild(makeElement("p", study.abstract));
+
+  if (study.pdfUrl) {
+    const link = makeElement("a", "Read Research PDF", "btn");
+    link.href = study.pdfUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    content.appendChild(link);
+  } else {
+    content.appendChild(makeElement(
+      "p", "PDF not yet available.", "meta"
+    ));
+  }
+
+  details.showModal();
+}
+
+search.addEventListener("input", renderStudies);
+category.addEventListener("change", renderStudies);
+level.addEventListener("change", renderStudies);
+
+document.getElementById("closeDialog")
+  .addEventListener("click", () => details.close());
+
+setup();
+</script>
+</body>
+</html>
