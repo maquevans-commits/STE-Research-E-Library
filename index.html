@@ -3,24 +3,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STE Research E-Library | DEIHS</title>
+
 <style>
 :root {
   --navy: #102b46;
   --teal: #087e83;
   --light: #edf7f8;
-  --white: #fff;
   --muted: #607080;
 }
+
 * { box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  color: var(--navy);
   background: #f5f8fb;
+  color: var(--navy);
   line-height: 1.6;
 }
+
 header {
   background: var(--navy);
   color: white;
@@ -31,32 +34,59 @@ header {
   flex-wrap: wrap;
   gap: 15px;
 }
-.brand { font-size: 20px; font-weight: bold; }
+
+.brand {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .brand small {
   display: block;
   font-size: 12px;
   font-weight: normal;
 }
+
 nav a {
   color: white;
   text-decoration: none;
   margin-left: 18px;
 }
+
 nav a:hover { text-decoration: underline; }
+
+/* SCHOOL BANNER */
 .hero {
-  background: linear-gradient(120deg,#102b46,#087e83);
+  min-height: 420px;
+  background-image:
+    linear-gradient(
+      rgba(16,43,70,0.35),
+      rgba(16,43,70,0.45)
+    ),
+    url("research-library-banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
-  padding: 85px 7%;
+  padding: 100px 7%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .hero h1 {
-  font-size: clamp(32px,5vw,52px);
+  font-size: clamp(30px,5vw,50px);
   margin: 0 0 12px;
+  text-shadow: 0 2px 8px #0008;
 }
+
 .hero p {
   max-width: 700px;
-  margin: 0 auto 25px;
+  margin: 0 auto 22px;
+  text-shadow: 0 2px 6px #0009;
 }
+
 .btn {
   display: inline-block;
   padding: 12px 22px;
@@ -67,37 +97,53 @@ nav a:hover { text-decoration: underline; }
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
 }
+
 .btn:hover { background: #06666a; }
+
 .hero .btn {
   background: white;
   color: var(--navy);
 }
+
 section { padding: 55px 7%; }
+
 .section-title {
   font-size: 28px;
   margin: 0 0 8px;
 }
-.subtitle { color: var(--muted); margin-top: 0; }
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 0;
+}
+
 .stats, .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+  grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
   gap: 18px;
   margin-top: 25px;
 }
+
 .stat, .card {
   background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 3px 12px #102b4612;
 }
+
 .stat { text-align: center; }
+
 .stat strong {
   display: block;
   font-size: 34px;
   color: var(--teal);
 }
-.card h3 { margin-top: 0; }
+
+.card h3 { margin-top: 12px; }
+
 .tag {
   display: inline-block;
   background: var(--light);
@@ -107,47 +153,72 @@ section { padding: 55px 7%; }
   font-size: 12px;
   font-weight: bold;
 }
+
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin: 25px 0;
 }
+
 input, select {
   padding: 13px;
   border: 1px solid #cbd5df;
   border-radius: 7px;
   font: inherit;
 }
-#search { flex: 2; min-width: 220px; }
-#category, #level { flex: 1; min-width: 160px; }
-.meta { color: var(--muted); font-size: 14px; }
+
+#search {
+  flex: 2;
+  min-width: 220px;
+}
+
+#category, #level {
+  flex: 1;
+  min-width: 160px;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .card button { margin-top: 10px; }
-#empty { display: none; color: var(--muted); }
+
+#empty {
+  display: none;
+  color: var(--muted);
+}
+
 .submit-section {
   background: var(--light);
   text-align: center;
 }
+
 .submit-section p {
   max-width: 650px;
   margin: 0 auto 25px;
 }
+
 footer {
   background: var(--navy);
   color: white;
   text-align: center;
   padding: 28px 15px;
 }
+
 dialog {
   border: none;
   border-radius: 14px;
   padding: 30px;
-  width: min(600px,90vw);
+  width: min(650px,90vw);
   max-height: 85vh;
   overflow: auto;
   box-shadow: 0 15px 50px #0004;
 }
+
 dialog::backdrop { background: #0009; }
+
 .close {
   float: right;
   background: none;
@@ -155,20 +226,36 @@ dialog::backdrop { background: #0009; }
   font-size: 26px;
   cursor: pointer;
 }
+
 @media(max-width:600px) {
-  header { justify-content: center; text-align: center; }
-  nav a { margin: 0 8px; font-size: 14px; }
-  .hero { padding: 60px 6%; }
+  header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+
+  .hero {
+    min-height: 300px;
+    padding: 60px 6%;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
   <div class="brand">
     STE Research E-Library
-    <small>Dasmariñas East Integrated High School</small>
+    <small>
+      Dasmariñas East Integrated High School
+    </small>
   </div>
+
   <nav>
     <a href="#home">Home</a>
     <a href="#library">Library</a>
@@ -178,22 +265,30 @@ dialog::backdrop { background: #0009; }
 </header>
 
 <main>
+
 <section class="hero" id="home">
   <h1>STE Research E-Library</h1>
   <p>A Digital Archive of Student Scientific Studies</p>
   <p>
     Discover, explore, and share scientific research
-    conducted by student researchers. Building a
-    community of innovation, curiosity, and discovery.
+    conducted by student researchers.
+    Building a community of innovation,
+    curiosity, and discovery.
   </p>
-  <a class="btn" href="#library">Explore Research Library</a>
+  <a class="btn" href="#library">
+    Explore Research Library
+  </a>
 </section>
 
 <section id="about">
-  <h2 class="section-title">Welcome to Our Research Archive</h2>
+  <h2 class="section-title">
+    Welcome to Our Research Archive
+  </h2>
+
   <p class="subtitle">
     A digital learning resource for STE and regular students.
   </p>
+
   <p>
     The STE Research E-Library preserves and showcases
     approved student scientific studies. It promotes
@@ -206,10 +301,12 @@ dialog::backdrop { background: #0009; }
       <strong id="total">0</strong>
       Research Studies
     </div>
+
     <div class="stat">
       <strong id="categoriesCount">0</strong>
       Research Categories
     </div>
+
     <div class="stat">
       <strong>STE + Regular</strong>
       Student Access
@@ -219,20 +316,25 @@ dialog::backdrop { background: #0009; }
 
 <section id="library">
   <h2 class="section-title">Research Library</h2>
+
   <p class="subtitle">
-    Search approved research by title, author, keyword,
-    category, or school year.
+    Search research studies by title, author,
+    keyword, category, or school year.
   </p>
 
   <div class="filters">
-    <input id="search" type="search"
-      placeholder="Search research studies...">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search research studies..."
+      aria-label="Search research studies"
+    >
 
-    <select id="category">
+    <select id="category" aria-label="Research category">
       <option value="">All Categories</option>
     </select>
 
-    <select id="level">
+    <select id="level" aria-label="Student program">
       <option value="">All Student Programs</option>
       <option value="STE">STE</option>
       <option value="Regular">Regular</option>
@@ -240,27 +342,45 @@ dialog::backdrop { background: #0009; }
   </div>
 
   <div class="cards" id="researchList"></div>
-  <p id="empty">No matching research studies found.</p>
+
+  <p id="empty">
+    No matching research studies found.
+  </p>
 </section>
 
 <section class="submit-section" id="submit">
-  <h2 class="section-title">Submit Your Research</h2>
+  <h2 class="section-title">
+    Submit Your Research
+  </h2>
+
   <p>
-    Are you a student researcher? Share your completed
-    scientific study for possible inclusion in our
-    digital research archive.
+    Are you a student researcher?
+    Submit your completed scientific study
+    for possible inclusion in our digital archive.
   </p>
+
   <p>
-    All submissions undergo teacher review and approval
-    before publication. Obtain the necessary permission
-    before submitting student names or research documents.
+    All submissions undergo teacher review and
+    approval before publication.
+    Obtain the necessary permission before
+    submitting student names or research documents.
   </p>
-  <a class="btn" id="submitLink"
-     href="YOUR_GOOGLE_FORM_LINK"
-     target="_blank" rel="noopener noreferrer">
-    Submit Research Paper
+
+  <a
+    class="btn"
+    href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Open Research Submission Folder
   </a>
+
+  <p class="meta" style="margin-top:20px">
+    Please follow your teacher's instructions
+    when submitting research papers.
+  </p>
 </section>
+
 </main>
 
 <footer>
@@ -272,57 +392,140 @@ dialog::backdrop { background: #0009; }
 </footer>
 
 <dialog id="details">
-  <button class="close" id="closeDialog"
-    aria-label="Close details">&times;</button>
+  <button
+    class="close"
+    id="closeDialog"
+    aria-label="Close details"
+  >&times;</button>
+
   <div id="detailContent"></div>
 </dialog>
 
 <script>
-// SAMPLE DATA ONLY.
-// Replace these examples with approved student research.
-// Add a public PDF URL to pdfUrl when available.
+
+/*
+  RESEARCH DATABASE
+
+  Add new approved studies inside this array.
+  Each study has its own Google Drive PDF link.
+
+  Authors, years, and abstracts can be added
+  when verified information is available.
+*/
 
 const studies = [
+
   {
     id: 1,
-    title: "Sample Study: Water Quality Monitoring",
-    authors: "Sample Student Researchers",
-    year: "2026",
+    title: "Formulation and Efficacy of a Lemongrass and Oregano-Based Candle as a Natural Mosquito Repellent",
+    authors: "Not yet provided",
+    year: "Not yet provided",
     program: "STE",
-    category: "Environmental Science",
-    keywords: ["water", "quality", "monitoring"],
-    abstract: "A demonstration entry describing a proposed investigation of water quality using scientific measurements.",
-    pdfUrl: ""
+    category: "Life Sciences",
+    keywords: [
+      "lemongrass",
+      "oregano",
+      "candle",
+      "mosquito",
+      "repellent"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
   },
+
   {
     id: 2,
-    title: "Sample Study: Plant Growth and Light",
-    authors: "Sample Student Researchers",
-    year: "2026",
-    program: "Regular",
-    category: "Life Sciences",
-    keywords: ["plants", "light", "growth"],
-    abstract: "A demonstration entry exploring how different light conditions may influence plant growth.",
-    pdfUrl: ""
+    title: "Utilizing Coconut (Cocos nucifera) Husk as Paper and Banana (Musa acuminata) as Adhesive for Sustainable Paper Bags",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Environmental Science",
+    keywords: [
+      "coconut",
+      "banana",
+      "paper",
+      "adhesive",
+      "sustainable",
+      "paper bags"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
   },
+
   {
     id: 3,
-    title: "Sample Study: Automated Waste Sorting",
-    authors: "Sample Student Researchers",
-    year: "2025",
+    title: "From Waste to Weapon: Developing an Eco-Friendly Cockroach Control Solution from Pineapple Peels (Ananas comosus), Rice Hulls (Oryza sativa L.), and Turmeric (Curcuma longa)",
+    authors: "Not yet provided",
+    year: "Not yet provided",
     program: "STE",
-    category: "Robotics & Intelligent Machines",
-    keywords: ["robotics", "waste", "automation"],
-    abstract: "A demonstration entry proposing a prototype for automated waste classification.",
-    pdfUrl: ""
+    category: "Life Sciences",
+    keywords: [
+      "cockroach",
+      "pineapple",
+      "rice hulls",
+      "turmeric",
+      "pest control",
+      "eco-friendly"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
+  },
+
+  {
+    id: 4,
+    title: "MO-Drain SySTEM: An Analysis on Flood Risk and Water Flow Dynamics",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Engineering and Technology",
+    keywords: [
+      "flood",
+      "drainage",
+      "water flow",
+      "flood risk",
+      "MO-Drain"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
+  },
+
+  {
+    id: 5,
+    title: "Assessing the Impact of Bougainvillea Wood Ash on Soil Microbial Diversity and Fertility in Acidic Tropical Soils",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Environmental Science",
+    keywords: [
+      "bougainvillea",
+      "wood ash",
+      "soil",
+      "microbial diversity",
+      "soil fertility",
+      "acidic tropical soils"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
   }
+
 ];
 
-const researchList = document.getElementById("researchList");
-const search = document.getElementById("search");
-const category = document.getElementById("category");
-const level = document.getElementById("level");
-const details = document.getElementById("details");
+/* WEBSITE FUNCTIONS */
+
+const researchList =
+  document.getElementById("researchList");
+
+const search =
+  document.getElementById("search");
+
+const category =
+  document.getElementById("category");
+
+const level =
+  document.getElementById("level");
+
+const details =
+  document.getElementById("details");
 
 function safeText(value) {
   return String(value ?? "");
@@ -331,14 +534,19 @@ function safeText(value) {
 function makeElement(tag, text, className) {
   const el = document.createElement(tag);
   el.textContent = safeText(text);
-  if (className) el.className = className;
+
+  if (className) {
+    el.className = className;
+  }
+
   return el;
 }
 
 function setup() {
-  const categories = [...new Set(
-    studies.map(s => s.category)
-  )].sort();
+
+  const categories = [
+    ...new Set(studies.map(s => s.category))
+  ].sort();
 
   categories.forEach(name => {
     const option = document.createElement("option");
@@ -357,9 +565,12 @@ function setup() {
 }
 
 function renderStudies() {
-  const query = search.value.toLowerCase().trim();
+
+  const query =
+    search.value.toLowerCase().trim();
 
   const filtered = studies.filter(study => {
+
     const searchable = [
       study.title,
       study.authors,
@@ -370,36 +581,49 @@ function renderStudies() {
     ].join(" ").toLowerCase();
 
     return searchable.includes(query) &&
-      (!category.value || study.category === category.value) &&
-      (!level.value || study.program === level.value);
+      (!category.value ||
+        study.category === category.value) &&
+      (!level.value ||
+        study.program === level.value);
   });
 
   researchList.replaceChildren();
 
   filtered.forEach(study => {
+
     const card = document.createElement("article");
     card.className = "card";
 
-    card.appendChild(makeElement(
-      "span", study.category, "tag"
-    ));
-    card.appendChild(makeElement("h3", study.title));
-    card.appendChild(makeElement(
-      "p", study.authors, "meta"
-    ));
-    card.appendChild(makeElement(
-      "p",
-      `${study.program} | School Year: ${study.year}`,
-      "meta"
-    ));
+    card.appendChild(
+      makeElement("span", study.category, "tag")
+    );
 
-    const button = makeElement("button", "View Details", "btn");
+    card.appendChild(
+      makeElement("h3", study.title)
+    );
+
+    card.appendChild(
+      makeElement(
+        "p",
+        "Program: " + study.program,
+        "meta"
+      )
+    );
+
+    const button = makeElement(
+      "button",
+      "View Details",
+      "btn"
+    );
+
     button.type = "button";
+
     button.addEventListener("click", () => {
       showDetails(study);
     });
 
     card.appendChild(button);
+
     researchList.appendChild(card);
   });
 
@@ -408,48 +632,95 @@ function renderStudies() {
 }
 
 function showDetails(study) {
-  const content = document.getElementById("detailContent");
+
+  const content =
+    document.getElementById("detailContent");
+
   content.replaceChildren();
 
-  content.appendChild(makeElement("h2", study.title));
-  content.appendChild(makeElement(
-    "p", `Authors: ${study.authors}`
-  ));
-  content.appendChild(makeElement(
-    "p", `School Year: ${study.year}`
-  ));
-  content.appendChild(makeElement(
-    "p", `Program: ${study.program}`
-  ));
-  content.appendChild(makeElement(
-    "p", `Category: ${study.category}`
-  ));
-  content.appendChild(makeElement("h3", "Abstract"));
-  content.appendChild(makeElement("p", study.abstract));
+  content.appendChild(
+    makeElement("h2", study.title)
+  );
+
+  content.appendChild(
+    makeElement("p", "Authors: " + study.authors)
+  );
+
+  content.appendChild(
+    makeElement("p", "School Year: " + study.year)
+  );
+
+  content.appendChild(
+    makeElement("p", "Program: " + study.program)
+  );
+
+  content.appendChild(
+    makeElement("p", "Category: " + study.category)
+  );
+
+  content.appendChild(
+    makeElement("h3", "Abstract")
+  );
+
+  content.appendChild(
+    makeElement("p", study.abstract)
+  );
 
   if (study.pdfUrl) {
-    const link = makeElement("a", "Read Research PDF", "btn");
+
+    const link = makeElement(
+      "a",
+      "Read Research PDF",
+      "btn"
+    );
+
     link.href = study.pdfUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+
     content.appendChild(link);
+
   } else {
-    content.appendChild(makeElement(
-      "p", "PDF not yet available.", "meta"
-    ));
+
+    content.appendChild(
+      makeElement(
+        "p",
+        "PDF not yet available.",
+        "meta"
+      )
+    );
   }
 
   details.showModal();
 }
 
-search.addEventListener("input", renderStudies);
-category.addEventListener("change", renderStudies);
-level.addEventListener("change", renderStudies);
+search.addEventListener(
+  "input",
+  renderStudies
+);
+
+category.addEventListener(
+  "change",
+  renderStudies
+);
+
+level.addEventListener(
+  "change",
+  renderStudies
+);
 
 document.getElementById("closeDialog")
   .addEventListener("click", () => details.close());
 
+details.addEventListener("click", event => {
+  if (event.target === details) {
+    details.close();
+  }
+});
+
 setup();
+
 </script>
+
 </body>
 </html>
