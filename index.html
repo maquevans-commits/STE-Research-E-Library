@@ -4,64 +4,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>STE Research E-Library | DEIHS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --navy: #102b46;
   --teal: #087e83;
+  --teal-dark: #06666a;
   --light: #edf7f8;
-  --muted: #607080;
+  --background: #f5f8fb;
+  --muted: #64748b;
+  --border: #e2e8f0;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--background);
   color: var(--navy);
-  background: #f5f8fb;
   line-height: 1.6;
 }
+
+button, input, select {
+  font: inherit;
+}
+
+/* NAVIGATION */
 
 header {
   background: var(--navy);
   color: white;
-  padding: 18px 7%;
+  padding: 17px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 16px;
 }
 
 .brand {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
 }
 
 .brand small {
   display: block;
-  font-size: 12px;
-  font-weight: normal;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 3px;
 }
 
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 25px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
 }
 
-nav a:hover { text-decoration: underline; }
+nav a:hover {
+  color: #9de2e2;
+}
 
-/* IMPROVED BANNER - 900PX WIDE */
+/* HOMEPAGE BANNER */
 
 .hero {
   background: #eaf3fa;
@@ -76,6 +100,11 @@ nav a:hover { text-decoration: underline; }
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 6px 20px #102b4626;
+  transition: transform 0.2s ease;
+}
+
+.banner-link:hover {
+  transform: translateY(-2px);
 }
 
 .banner-link:focus-visible {
@@ -89,99 +118,197 @@ nav a:hover { text-decoration: underline; }
   height: auto;
 }
 
-/* GENERAL LAYOUT */
+/* GENERAL SECTIONS */
 
-section:not(.hero) { padding: 55px 7%; }
+section:not(.hero) {
+  padding: 55px 7%;
+}
 
 .section-title {
-  font-size: 28px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
   margin: 0 0 8px;
 }
 
-.subtitle, .meta { color: var(--muted); }
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
 
-.subtitle { margin-top: 0; }
+/* ABOUT */
 
-.stats, .cards {
+#about p {
+  font-size: 14px;
+}
+
+.stats {
   display: grid;
-  grid-template-columns:
-    repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin-top: 25px;
+  margin-top: 26px;
 }
 
-.stat, .card {
+.stat {
   background: white;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 3px 12px #102b4612;
+  padding: 24px 16px;
+  text-align: center;
 }
-
-.stat { text-align: center; }
 
 .stat strong {
   display: block;
-  font-size: 34px;
+  font-size: 27px;
   color: var(--teal);
+  font-weight: 700;
 }
 
-.card h3 { margin-top: 12px; }
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* RESEARCH LIBRARY */
+
+#library {
+  background: #f4f7fb;
+}
+
+.library-heading {
+  margin-bottom: 22px;
+}
+
+.library-heading .section-title {
+  margin-bottom: 5px;
+}
+
+/* SEARCH FILTERS */
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  padding: 13px 15px;
+  border: 1px solid #d9e2ec;
+  border-radius: 9px;
+  font-size: 13px;
+  color: var(--navy);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px #087e8315;
+}
+
+/* RESEARCH CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 265px;
+  box-shadow: 0 3px 12px #102b4608;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px #102b4618;
+}
 
 .tag {
   display: inline-block;
-  background: var(--light);
-  color: var(--teal);
-  padding: 4px 10px;
+  align-self: flex-start;
+  background: #e9f6f6;
+  color: #087579;
+  padding: 6px 11px;
   border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+}
+
+/* SMALLER, CLEANER TITLES */
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.55;
+  letter-spacing: -0.2px;
+  margin: 16px 0 13px;
+  overflow-wrap: anywhere;
+}
+
+.card .meta {
   font-size: 12px;
-  font-weight: bold;
+  color: var(--muted);
+  margin: 0 0 20px;
 }
 
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px 0;
-}
-
-input, select {
-  padding: 13px;
-  border: 1px solid #cbd5df;
-  border-radius: 7px;
-  font: inherit;
-}
-
-#search {
-  flex: 2;
-  min-width: 220px;
-}
-
-#category, #level {
-  flex: 1;
-  min-width: 160px;
+.card-bottom {
+  margin-top: auto;
+  padding-top: 12px;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 22px;
   background: var(--teal);
   color: white;
-  border: 0;
-  border-radius: 7px;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 17px;
+  font-size: 12px;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 14px;
+  transition: background 0.2s;
 }
 
-.btn:hover { background: #06666a; }
-
-.card button { margin-top: 10px; }
+.btn:hover {
+  background: var(--teal-dark);
+}
 
 #empty {
   display: none;
+  text-align: center;
   color: var(--muted);
+  padding: 30px;
+  font-size: 14px;
 }
+
+.library-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+/* SUBMISSION SECTION */
 
 .submit-section {
   background: var(--light);
@@ -190,35 +317,99 @@ input, select {
 
 .submit-section p {
   max-width: 650px;
-  margin: 0 auto 25px;
+  margin: 0 auto 22px;
+  font-size: 14px;
 }
+
+.submit-section .btn {
+  font-size: 13px;
+  padding: 13px 22px;
+}
+
+.meta {
+  color: var(--muted);
+}
+
+/* FOOTER */
 
 footer {
   background: var(--navy);
   color: white;
   text-align: center;
-  padding: 28px 15px;
+  padding: 30px 15px;
 }
+
+footer strong {
+  font-size: 15px;
+}
+
+footer p,
+footer small {
+  font-size: 12px;
+}
+
+/* DETAILS POPUP */
 
 dialog {
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 30px;
-  width: min(650px, 90vw);
+  width: min(650px, 92vw);
   max-height: 85vh;
-  overflow: auto;
-  box-shadow: 0 15px 50px #0004;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px #0004;
 }
 
-dialog::backdrop { background: #0009; }
+dialog::backdrop {
+  background: #102b4699;
+}
+
+dialog h2 {
+  font-size: 20px;
+  line-height: 1.45;
+  padding-right: 20px;
+}
+
+dialog h3 {
+  font-size: 15px;
+}
+
+dialog p {
+  font-size: 13px;
+  color: #475569;
+}
+
+dialog .btn {
+  margin-top: 10px;
+}
 
 .close {
   float: right;
   background: none;
   border: none;
-  font-size: 26px;
+  font-size: 27px;
   cursor: pointer;
+  color: var(--muted);
 }
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #search {
+    grid-column: 1 / -1;
+  }
+
+  .cards {
+    grid-template-columns:
+      repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* MOBILE */
 
 @media (max-width: 600px) {
   header {
@@ -228,24 +419,60 @@ dialog::backdrop { background: #0009; }
 
   nav {
     justify-content: center;
+    gap: 17px;
+  }
+
+  section:not(.hero) {
+    padding: 38px 5%;
+  }
+
+  .hero {
+    padding: 15px 4% 22px;
+  }
+
+  .banner-link {
+    border-radius: 8px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  section:not(.hero) { padding: 40px 6%; }
+  .filters {
+    grid-template-columns: 1fr;
+  }
 
-  .hero { padding: 15px 4% 22px; }
+  #search {
+    grid-column: auto;
+  }
 
-  .banner-link { border-radius: 8px; }
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    min-height: 220px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
   <div class="brand">
     STE Research E-Library
-    <small>Dasmariñas East Integrated High School</small>
+    <small>
+      Dasmariñas East Integrated High School
+    </small>
   </div>
 
   <nav>
@@ -258,24 +485,25 @@ dialog::backdrop { background: #0009; }
 
 <main>
 
-<!-- CLICKABLE SCHOOL BANNER -->
+<!-- BANNER -->
 
 <section class="hero" id="home">
-  <a class="banner-link"
-     href="#library"
-     aria-label="Explore Research Library">
+  <a
+    class="banner-link"
+    href="#library"
+    aria-label="Explore Research Library">
 
-    <img class="banner-image"
-         src="research-library-banner.png"
-         alt="STE Research E-Library - A Digital Archive of Student Scientific Studies">
+    <img
+      class="banner-image"
+      src="research-library-banner.png"
+      alt="STE Research E-Library Banner">
 
   </a>
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 
 <section id="about">
-
   <h2 class="section-title">
     Welcome to Our Research Archive
   </h2>
@@ -292,22 +520,20 @@ dialog::backdrop { background: #0009; }
   </p>
 
   <div class="stats">
-
     <div class="stat">
       <strong id="total">0</strong>
-      Research Studies
+      <span>Research Studies</span>
     </div>
 
     <div class="stat">
       <strong id="categoriesCount">0</strong>
-      Research Categories
+      <span>Research Categories</span>
     </div>
 
     <div class="stat">
       <strong>STE + Regular</strong>
-      Student Access
+      <span>Student Access</span>
     </div>
-
   </div>
 </section>
 
@@ -315,27 +541,29 @@ dialog::backdrop { background: #0009; }
 
 <section id="library">
 
-  <h2 class="section-title">Research Library</h2>
-
-  <p class="subtitle">
-    Search research studies by title, author,
-    keyword, category, or school year.
-  </p>
+  <div class="library-heading">
+    <h2 class="section-title">Research Library</h2>
+    <p class="subtitle">
+      Explore student scientific studies.
+      Search by title, keyword, category, or program.
+    </p>
+  </div>
 
   <div class="filters">
 
-    <input id="search"
-           type="search"
-           placeholder="Search research studies..."
-           aria-label="Search research studies">
+    <input
+      id="search"
+      type="search"
+      placeholder="Search research studies..."
+      aria-label="Search research studies">
 
     <select id="category"
-            aria-label="Research category">
+      aria-label="Research category">
       <option value="">All Categories</option>
     </select>
 
     <select id="level"
-            aria-label="Student program">
+      aria-label="Student program">
       <option value="">All Student Programs</option>
       <option value="STE">STE</option>
       <option value="Regular">Regular</option>
@@ -343,61 +571,72 @@ dialog::backdrop { background: #0009; }
 
   </div>
 
+  <p class="library-count" id="resultCount"></p>
+
   <div class="cards" id="researchList"></div>
 
   <p id="empty">
     No matching research studies found.
+    Try another keyword or category.
   </p>
 
 </section>
 
-<!-- SUBMISSION SECTION -->
+<!-- SUBMISSION -->
 
 <section class="submit-section" id="submit">
 
-  <h2 class="section-title">Submit Your Research</h2>
+  <h2 class="section-title">
+    Submit Your Research
+  </h2>
 
   <p>
-    Are you a student researcher? Submit your completed
-    scientific study for possible inclusion in our
-    digital archive.
+    Share your completed scientific study
+    for possible inclusion in our digital archive.
+    All submissions are subject to teacher
+    review and approval before publication.
   </p>
 
   <p>
-    All submissions undergo teacher review and approval
-    before publication. Obtain permission before
-    submitting student names or research documents.
+    Please ensure that you have permission
+    to share your research document and
+    any personal information included in it.
   </p>
 
-  <a class="btn"
-     href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
-     target="_blank"
-     rel="noopener noreferrer">
+  <a
+    class="btn"
+    href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer">
     Open Research Submission Folder
   </a>
 
   <p class="meta" style="margin-top:20px">
-    Please follow your teacher's instructions
-    when submitting research papers.
+    Follow your teacher's submission instructions.
   </p>
 
 </section>
 
 </main>
 
+<!-- FOOTER -->
+
 <footer>
   <strong>STE Research E-Library</strong>
   <p>Dasmariñas East Integrated High School</p>
-  <small>A Digital Archive of Student Scientific Studies</small>
+  <small>
+    A Digital Archive of Student Scientific Studies
+  </small>
 </footer>
 
-<!-- RESEARCH DETAILS POPUP -->
+<!-- RESEARCH DETAILS -->
 
 <dialog id="details">
 
-  <button class="close"
-          id="closeDialog"
-          aria-label="Close details">
+  <button
+    class="close"
+    id="closeDialog"
+    aria-label="Close details">
     &times;
   </button>
 
@@ -407,7 +646,7 @@ dialog::backdrop { background: #0009; }
 
 <script>
 
-/* RESEARCH DATABASE - FIVE STUDIES */
+/* RESEARCH DATABASE */
 
 const studies = [
 
@@ -419,8 +658,11 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     keywords: [
-      "lemongrass", "oregano", "candle",
-      "mosquito", "repellent"
+      "lemongrass",
+      "oregano",
+      "candle",
+      "mosquito",
+      "repellent"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
@@ -434,8 +676,11 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     keywords: [
-      "coconut", "banana", "paper",
-      "adhesive", "sustainable"
+      "coconut",
+      "banana",
+      "paper",
+      "adhesive",
+      "sustainable"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
@@ -449,8 +694,11 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     keywords: [
-      "cockroach", "pineapple", "rice hulls",
-      "turmeric", "pest control"
+      "cockroach",
+      "pineapple",
+      "rice hulls",
+      "turmeric",
+      "pest control"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
@@ -464,8 +712,11 @@ const studies = [
     program: "STE",
     category: "Engineering and Technology",
     keywords: [
-      "flood", "drainage", "water flow",
-      "flood risk", "MO-Drain"
+      "flood",
+      "drainage",
+      "water flow",
+      "flood risk",
+      "MO-Drain"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
@@ -479,8 +730,11 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     keywords: [
-      "bougainvillea", "wood ash", "soil",
-      "microbial diversity", "soil fertility"
+      "bougainvillea",
+      "wood ash",
+      "soil",
+      "microbial diversity",
+      "soil fertility"
     ],
     abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
@@ -506,9 +760,7 @@ const details =
   document.getElementById("details");
 
 function makeElement(tag, value, className) {
-
   const el = document.createElement(tag);
-
   el.textContent = String(value ?? "");
 
   if (className) {
@@ -561,13 +813,16 @@ function renderStudies() {
 
     return searchable.includes(query) &&
       (!category.value ||
-       study.category === category.value) &&
+        study.category === category.value) &&
       (!level.value ||
-       study.program === level.value);
-
+        study.program === level.value);
   });
 
   researchList.replaceChildren();
+
+  document.getElementById("resultCount").textContent =
+    "Showing " + filtered.length +
+    " of " + studies.length + " research studies";
 
   filtered.forEach(study => {
 
@@ -590,9 +845,12 @@ function renderStudies() {
       )
     );
 
+    const bottom = document.createElement("div");
+    bottom.className = "card-bottom";
+
     const button = makeElement(
       "button",
-      "View Details",
+      "View Research",
       "btn"
     );
 
@@ -602,9 +860,9 @@ function renderStudies() {
       showDetails(study);
     });
 
-    card.appendChild(button);
+    bottom.appendChild(button);
+    card.appendChild(bottom);
     researchList.appendChild(card);
-
   });
 
   document.getElementById("empty").style.display =
@@ -623,31 +881,19 @@ function showDetails(study) {
   );
 
   content.appendChild(
-    makeElement(
-      "p",
-      "Authors: " + study.authors
-    )
+    makeElement("p", "Authors: " + study.authors)
   );
 
   content.appendChild(
-    makeElement(
-      "p",
-      "School Year: " + study.year
-    )
+    makeElement("p", "School Year: " + study.year)
   );
 
   content.appendChild(
-    makeElement(
-      "p",
-      "Program: " + study.program
-    )
+    makeElement("p", "Program: " + study.program)
   );
 
   content.appendChild(
-    makeElement(
-      "p",
-      "Category: " + study.category
-    )
+    makeElement("p", "Category: " + study.category)
   );
 
   content.appendChild(
@@ -681,7 +927,6 @@ function showDetails(study) {
         "meta"
       )
     );
-
   }
 
   details.showModal();
@@ -697,11 +942,9 @@ document.getElementById("closeDialog")
   .addEventListener("click", () => details.close());
 
 details.addEventListener("click", event => {
-
   if (event.target === details) {
     details.close();
   }
-
 });
 
 setup();
