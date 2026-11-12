@@ -1,5 +1,472 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>STE Research E-Library | DEIHS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #102b46;
+  --teal: #087e83;
+  --teal-dark: #06666a;
+  --light: #edf7f8;
+  --background: #f5f8fb;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--background);
+  color: var(--navy);
+  line-height: 1.6;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+/* HEADER */
+
+header {
+  background: var(--navy);
+  color: white;
+  padding: 17px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.brand small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #9de2e2;
+}
+
+/* BANNER */
+
+.hero {
+  background: #eaf3fa;
+  padding: 24px 5% 30px;
+  text-align: center;
+}
+
+.banner-link {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px #102b4626;
+}
+
+.banner-link:focus-visible {
+  outline: 3px solid #e0a800;
+  outline-offset: 4px;
+}
+
+.banner-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* GENERAL SECTIONS */
+
+section:not(.hero) {
+  padding: 55px 7%;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+/* ABOUT */
+
+#about p {
+  font-size: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.stat {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 27px;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.stat span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* RESEARCH LIBRARY */
+
+#library {
+  background: #f4f7fb;
+}
+
+.library-heading {
+  margin-bottom: 22px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.filters input,
+.filters select {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  padding: 13px 15px;
+  border: 1px solid #d9e2ec;
+  border-radius: 9px;
+  font-size: 13px;
+  color: var(--navy);
+  outline: none;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px #087e8315;
+}
+
+/* RESEARCH CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 265px;
+  box-shadow: 0 3px 12px #102b4608;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px #102b4618;
+}
+
+.tag {
+  display: inline-block;
+  align-self: flex-start;
+  background: #e9f6f6;
+  color: #087579;
+  padding: 6px 11px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.55;
+  margin: 16px 0 13px;
+  overflow-wrap: anywhere;
+}
+
+.card .meta {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.card-bottom {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 17px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--teal-dark);
+}
+
+#empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+  font-size: 14px;
+}
+
+.library-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+/* SUBMISSION */
+
+.submit-section {
+  background: var(--light);
+  text-align: center;
+}
+
+.submit-section p {
+  max-width: 650px;
+  margin: 0 auto 22px;
+  font-size: 14px;
+}
+
+.submit-section .btn {
+  font-size: 13px;
+  padding: 13px 22px;
+}
+
+.meta {
+  color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer strong {
+  font-size: 15px;
+}
+
+footer p,
+footer small {
+  font-size: 12px;
+}
+
+/* DETAILS POPUP */
+
+dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 30px;
+  width: min(650px, 92vw);
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px #0004;
+}
+
+dialog::backdrop {
+  background: #102b4699;
+}
+
+dialog h2 {
+  font-size: 20px;
+  line-height: 1.45;
+  padding-right: 20px;
+}
+
+dialog h3 {
+  font-size: 15px;
+}
+
+dialog p {
+  font-size: 13px;
+  color: #475569;
+}
+
+dialog .btn {
+  margin-top: 10px;
+}
+
+.close {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 27px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #search {
+    grid-column: 1 / -1;
+  }
+
+  .cards {
+    grid-template-columns:
+      repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+  header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 17px;
+  }
+
+  section:not(.hero) {
+    padding: 38px 5%;
+  }
+
+  .hero {
+    padding: 15px 4% 22px;
+  }
+
+  .banner-link {
+    border-radius: 8px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  #search {
+    grid-column: auto;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    min-height: 220px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    STE Research E-Library
+    <small>
+      Dasmariñas East Integrated High School
+    </small>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#library">Library</a>
+    <a href="#about">About</a>
+    <a href="#submit">Submit</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- CLICKABLE BANNER -->
+
 <section class="hero" id="home">
+
   <a class="banner-link"
      href="#library"
      aria-label="Explore Research Library">
@@ -10,4 +477,456 @@
       alt="STE Research E-Library Banner">
 
   </a>
+
 </section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <h2 class="section-title">
+    Welcome to Our Research Archive
+  </h2>
+
+  <p class="subtitle">
+    A digital learning resource for STE
+    and regular students.
+  </p>
+
+  <p>
+    The STE Research E-Library preserves and
+    showcases approved student scientific studies.
+    It promotes research literacy, academic integrity,
+    and evidence-based learning.
+  </p>
+
+  <div class="stats">
+
+    <div class="stat">
+      <strong id="total">0</strong>
+      <span>Research Studies</span>
+    </div>
+
+    <div class="stat">
+      <strong id="categoriesCount">0</strong>
+      <span>Research Categories</span>
+    </div>
+
+    <div class="stat">
+      <strong>STE + Regular</strong>
+      <span>Student Access</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- LIBRARY -->
+
+<section id="library">
+
+  <div class="library-heading">
+    <h2 class="section-title">Research Library</h2>
+    <p class="subtitle">
+      Explore student scientific studies.
+      Search by title, keyword, category, or program.
+    </p>
+  </div>
+
+  <div class="filters">
+
+    <input
+      id="search"
+      type="search"
+      placeholder="Search research studies..."
+      aria-label="Search research studies">
+
+    <select id="category"
+      aria-label="Research category">
+      <option value="">All Categories</option>
+    </select>
+
+    <select id="level"
+      aria-label="Student program">
+      <option value="">All Student Programs</option>
+      <option value="STE">STE</option>
+      <option value="Regular">Regular</option>
+    </select>
+
+  </div>
+
+  <p class="library-count" id="resultCount"></p>
+
+  <div class="cards" id="researchList"></div>
+
+  <p id="empty">
+    No matching research studies found.
+    Try another keyword or category.
+  </p>
+
+</section>
+
+<!-- SUBMISSION -->
+
+<section class="submit-section" id="submit">
+
+  <h2 class="section-title">
+    Submit Your Research
+  </h2>
+
+  <p>
+    Share your completed scientific study
+    for possible inclusion in our digital archive.
+    All submissions are subject to teacher
+    review and approval before publication.
+  </p>
+
+  <p>
+    Please ensure that you have permission
+    to share your research document and
+    any personal information included in it.
+  </p>
+
+  <a
+    class="btn"
+    href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer">
+    Open Research Submission Folder
+  </a>
+
+  <p class="meta" style="margin-top:20px">
+    Follow your teacher's submission instructions.
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  <strong>STE Research E-Library</strong>
+  <p>Dasmariñas East Integrated High School</p>
+  <small>
+    A Digital Archive of Student Scientific Studies
+  </small>
+</footer>
+
+<!-- RESEARCH DETAILS POPUP -->
+
+<dialog id="details">
+
+  <button
+    class="close"
+    id="closeDialog"
+    aria-label="Close details">
+    &times;
+  </button>
+
+  <div id="detailContent"></div>
+
+</dialog>
+
+<script>
+
+/* FIVE RESEARCH STUDIES */
+
+const studies = [
+
+  {
+    id: 1,
+    title: "Formulation and Efficacy of a Lemongrass and Oregano-Based Candle as a Natural Mosquito Repellent",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Life Sciences",
+    keywords: [
+      "lemongrass", "oregano", "candle",
+      "mosquito", "repellent"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
+  },
+
+  {
+    id: 2,
+    title: "Utilizing Coconut (Cocos nucifera) Husk as Paper and Banana (Musa acuminata) as Adhesive for Sustainable Paper Bags",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Environmental Science",
+    keywords: [
+      "coconut", "banana", "paper",
+      "adhesive", "sustainable"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
+  },
+
+  {
+    id: 3,
+    title: "From Waste to Weapon: Developing an Eco-Friendly Cockroach Control Solution from Pineapple Peels (Ananas comosus), Rice Hulls (Oryza sativa L.), and Turmeric (Curcuma longa)",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Life Sciences",
+    keywords: [
+      "cockroach", "pineapple", "rice hulls",
+      "turmeric", "pest control"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
+  },
+
+  {
+    id: 4,
+    title: "MO-Drain SySTEM: An Analysis on Flood Risk and Water Flow Dynamics",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Engineering and Technology",
+    keywords: [
+      "flood", "drainage", "water flow",
+      "flood risk", "MO-Drain"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
+  },
+
+  {
+    id: 5,
+    title: "Assessing the Impact of Bougainvillea Wood Ash on Soil Microbial Diversity and Fertility in Acidic Tropical Soils",
+    authors: "Not yet provided",
+    year: "Not yet provided",
+    program: "STE",
+    category: "Environmental Science",
+    keywords: [
+      "bougainvillea", "wood ash", "soil",
+      "microbial diversity", "soil fertility"
+    ],
+    abstract: "Abstract not yet provided. Open the research paper to read the complete study.",
+    pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
+  }
+
+];
+
+/* FUNCTIONS */
+
+const researchList =
+  document.getElementById("researchList");
+
+const search =
+  document.getElementById("search");
+
+const category =
+  document.getElementById("category");
+
+const level =
+  document.getElementById("level");
+
+const details =
+  document.getElementById("details");
+
+function makeElement(tag, value, className) {
+  const el = document.createElement(tag);
+  el.textContent = String(value ?? "");
+
+  if (className) {
+    el.className = className;
+  }
+
+  return el;
+}
+
+function setup() {
+
+  const categories = [
+    ...new Set(studies.map(s => s.category))
+  ].sort();
+
+  categories.forEach(name => {
+
+    const option = document.createElement("option");
+
+    option.value = name;
+    option.textContent = name;
+
+    category.appendChild(option);
+
+  });
+
+  document.getElementById("total").textContent =
+    studies.length;
+
+  document.getElementById("categoriesCount").textContent =
+    categories.length;
+
+  renderStudies();
+}
+
+function renderStudies() {
+
+  const query =
+    search.value.toLowerCase().trim();
+
+  const filtered = studies.filter(study => {
+
+    const searchable = [
+      study.title,
+      study.authors,
+      study.year,
+      study.category,
+      study.program,
+      ...study.keywords
+    ].join(" ").toLowerCase();
+
+    return searchable.includes(query) &&
+      (!category.value ||
+        study.category === category.value) &&
+      (!level.value ||
+        study.program === level.value);
+
+  });
+
+  researchList.replaceChildren();
+
+  document.getElementById("resultCount").textContent =
+    "Showing " + filtered.length +
+    " of " + studies.length + " research studies";
+
+  filtered.forEach(study => {
+
+    const card =
+      document.createElement("article");
+
+    card.className = "card";
+
+    card.appendChild(
+      makeElement("span", study.category, "tag")
+    );
+
+    card.appendChild(
+      makeElement("h3", study.title)
+    );
+
+    card.appendChild(
+      makeElement(
+        "p",
+        "Program: " + study.program,
+        "meta"
+      )
+    );
+
+    const bottom =
+      document.createElement("div");
+
+    bottom.className = "card-bottom";
+
+    const button = makeElement(
+      "button",
+      "View Research",
+      "btn"
+    );
+
+    button.type = "button";
+
+    button.addEventListener("click", () => {
+      showDetails(study);
+    });
+
+    bottom.appendChild(button);
+    card.appendChild(bottom);
+    researchList.appendChild(card);
+
+  });
+
+  document.getElementById("empty").style.display =
+    filtered.length ? "none" : "block";
+}
+
+function showDetails(study) {
+
+  const content =
+    document.getElementById("detailContent");
+
+  content.replaceChildren();
+
+  content.appendChild(
+    makeElement("h2", study.title)
+  );
+
+  content.appendChild(
+    makeElement("p", "Authors: " + study.authors)
+  );
+
+  content.appendChild(
+    makeElement("p", "School Year: " + study.year)
+  );
+
+  content.appendChild(
+    makeElement("p", "Program: " + study.program)
+  );
+
+  content.appendChild(
+    makeElement("p", "Category: " + study.category)
+  );
+
+  content.appendChild(
+    makeElement("h3", "Abstract")
+  );
+
+  content.appendChild(
+    makeElement("p", study.abstract)
+  );
+
+  if (study.pdfUrl) {
+
+    const link = makeElement(
+      "a",
+      "Read Research PDF",
+      "btn"
+    );
+
+    link.href = study.pdfUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    content.appendChild(link);
+
+  } else {
+
+    content.appendChild(
+      makeElement(
+        "p",
+        "PDF not yet available.",
+        "meta"
+      )
+    );
+
+  }
+
+  details.showModal();
+}
+
+search.addEventListener("input", renderStudies);
+
+category.addEventListener("change", renderStudies);
+
+level.addEventListener("change", renderStudies);
+
+document.getElementById("closeDialog")
+  .addEventListener("click", () => details.close());
+
+details.addEventListener("click", event => {
+
+  if (event.target === details) {
+    details.close();
+  }
+
+});
+
+setup();
+
+</script>
+
+</body>
+</html>
