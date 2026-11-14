@@ -113,11 +113,6 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-.banner-link:focus-visible {
-  outline: 3px solid var(--gold);
-  outline-offset: 4px;
-}
-
 .banner-image {
   display: block;
   width: 100%;
@@ -245,6 +240,17 @@ section:not(.hero) {
   border-radius: 20px;
   font-size: 10px;
   font-weight: 700;
+}
+
+.dstf-tag {
+  display: inline-block;
+  background: #fff4d6;
+  color: #946200;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 6px;
 }
 
 .card h3 {
@@ -426,17 +432,6 @@ dialog .btn {
 
   .hero {
     padding: 12px 3% 20px;
-  }
-
-  .banner-link {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px #102b461c;
-  }
-
-  .banner-image {
-    width: 100%;
-    height: auto;
   }
 
   .section-title {
@@ -647,9 +642,12 @@ dialog .btn {
 
 <script>
 
-/* ALL RESEARCH STUDIES */
+/* RESEARCH STUDIES */
 
 const studies = [
+
+  /* ORIGINAL RESEARCH STUDIES */
+
   {
     id: 1,
     title: "Formulation and Efficacy of a Lemongrass and Oregano-Based Candle as a Natural Mosquito Repellent",
@@ -657,10 +655,12 @@ const studies = [
     year: "Not yet provided",
     program: "STE",
     category: "Life Sciences",
+    dstf: false,
     keywords: ["lemongrass", "oregano", "candle", "mosquito", "repellent"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
   },
+
   {
     id: 2,
     title: "Utilizing Coconut (Cocos nucifera) Husk as Paper and Banana (Musa acuminata) as Adhesive for Sustainable Paper Bags",
@@ -668,10 +668,12 @@ const studies = [
     year: "Not yet provided",
     program: "STE",
     category: "Environmental Science",
+    dstf: false,
     keywords: ["coconut", "banana", "paper", "adhesive", "sustainable"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
   },
+
   {
     id: 3,
     title: "From Waste to Weapon: Developing an Eco-Friendly Cockroach Control Solution from Pineapple Peels (Ananas comosus), Rice Hulls (Oryza sativa L.), and Turmeric (Curcuma longa)",
@@ -679,10 +681,12 @@ const studies = [
     year: "Not yet provided",
     program: "STE",
     category: "Life Sciences",
+    dstf: false,
     keywords: ["cockroach", "pineapple", "rice hulls", "turmeric", "pest control"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
   },
+
   {
     id: 4,
     title: "MO-Drain SySTEM: An Analysis on Flood Risk and Water Flow Dynamics",
@@ -690,10 +694,12 @@ const studies = [
     year: "Not yet provided",
     program: "STE",
     category: "Engineering and Technology",
+    dstf: false,
     keywords: ["flood", "drainage", "water flow", "flood risk", "MO-Drain"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
   },
+
   {
     id: 5,
     title: "Assessing the Impact of Bougainvillea Wood Ash on Soil Microbial Diversity and Fertility in Acidic Tropical Soils",
@@ -701,112 +707,131 @@ const studies = [
     year: "Not yet provided",
     program: "STE",
     category: "Environmental Science",
+    dstf: false,
     keywords: ["bougainvillea", "wood ash", "soil", "microbial diversity", "soil fertility"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
   },
 
-  /* NEW RESEARCH LINKS */
+  /* NEW DSTF RESEARCH STUDIES */
 
   {
     id: 6,
-    title: "Research Title Pending - Study 6",
+    title: "Breaking the Thermal Barrier Performance Evaluation of an Arduino-Regulated Root-Zone Cooling Hydroponic System for Lowland Strawberry (Fragaria × ananassa) Production",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 6"],
+    category: "Agricultural Science",
+    dstf: false,
+    keywords: ["strawberry", "hydroponics", "Arduino", "root-zone cooling", "agriculture"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1yxdkXULSdgXXu_MbLggBWZSkO5UDOhET/view?usp=drive_link"
   },
+
   {
     id: 7,
-    title: "Research Title Pending - Study 7",
+    title: "Disruption of Metamorphic Ontogeny and Feeding Deterrence in Fall Armyworm (Spodoptera frugiperda) Reared on Corn (Zea mays) via Kantutay (Lantana camara) Foliar Extract",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 7"],
+    category: "Life Sciences",
+    dstf: true,
+    keywords: ["fall armyworm", "corn", "kantutay", "Lantana camara", "pest control", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1CCLmgwN-CXtgB-_T8rMU976rLVUSpYA2/view?usp=drive_link"
   },
+
   {
     id: 8,
-    title: "Research Title Pending - Study 8",
+    title: "Earth-Wake Development of a Piezoelectric Tile and Solar-Powered Earthquake Alert System for School Safety",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 8"],
+    category: "Engineering and Technology",
+    dstf: true,
+    keywords: ["Earth-Wake", "piezoelectric", "solar", "earthquake", "school safety", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1-Yz_keHnS364KqtZt0P8xzO5Qzu6YzXP/view?usp=drive_link"
   },
+
   {
     id: 9,
-    title: "Research Title Pending - Study 9",
+    title: "MicroCount (STEVision) A Web-Based Computational System for Detecting and Quantifying Suspected Microplastic Contamination in Drinking Water and Providing Evidence-Based Water Management Recommendations",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 9"],
+    category: "Computational Science",
+    dstf: true,
+    keywords: ["MicroCount", "STEVision", "microplastics", "drinking water", "image analysis", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1uKNWQsKI4oHJIWEOiSQXrFew1V4PrL4U/view?usp=drive_link"
   },
+
   {
     id: 10,
-    title: "Research Title Pending - Study 10",
+    title: "Moringa (Moringa oleifera) Leaf Extract Seed Priming as a Sustainable Approach to Mitigating Fragmented Polypropylene Plastic Stress in Rice (Oryza sativa L.)",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 10"],
+    category: "Agricultural Science",
+    dstf: true,
+    keywords: ["moringa", "rice", "seed priming", "polypropylene", "plastic stress", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1yv8CB3-d7Hh-6C8mZg-U5KRA8KsuZM5R/view?usp=drive_link"
   },
+
   {
     id: 11,
-    title: "Research Title Pending - Study 11",
+    title: "Paw Treatment Assistant (PawTA) A Smart Animal Bite Assistance Application Integrating First-Aid Guidance, Rabies Pre-Assessment, Treatment Center Information, and Electronic Reporting",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 11"],
+    category: "Health and Technology",
+    dstf: true,
+    keywords: ["PawTA", "animal bite", "rabies", "first aid", "application", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1dLpzgMjfX8xVleUH4FdlQmezS7Eo6LIF/view?usp=drive_link"
   },
+
   {
     id: 12,
-    title: "Research Title Pending - Study 12",
+    title: "Sensor-Integrated Drone System for Precision Plant Growth Monitoring and AI-Based Farmer Advisory",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 12"],
+    category: "Engineering and Technology",
+    dstf: true,
+    keywords: ["drone", "sensors", "AI", "plant monitoring", "farmer advisory", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1EwSdk44cRaYsu7rWzg7wFnvCxr5AHf6m/view?usp=drive_link"
   },
+
   {
     id: 13,
-    title: "Research Title Pending - Study 13",
+    title: "ShopBot An Autonomous Assistive Supermarket Robot for PWD Navigation and Safety",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 13"],
+    category: "Robotics and Intelligent Machines",
+    dstf: true,
+    keywords: ["ShopBot", "robot", "PWD", "supermarket", "navigation", "safety", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/15AOasYTbmX8bWEBWCd-bS0Vn8K8fAU27/view?usp=drive_link"
   },
+
   {
     id: 14,
-    title: "Research Title Pending - Study 14",
+    title: "VibroVerm A Vibration Tracked Arduino Based Vermicompost Optimizer for Rapid High Quality Organic Fertilizer Production",
     authors: "Not yet provided",
     year: "Not yet provided",
     program: "STE",
-    category: "Uncategorized",
-    keywords: ["research", "study 14"],
+    category: "Environmental Science",
+    dstf: true,
+    keywords: ["VibroVerm", "Arduino", "vermicompost", "vibration", "organic fertilizer", "DSTF"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1lCLv5t5xGMlhKYId7oucaFAaroXDY2Qv/view?usp=drive_link"
   }
+
 ];
 
 /* ELEMENTS */
@@ -883,6 +908,7 @@ function renderStudies() {
       study.year,
       study.category,
       study.program,
+      study.dstf ? "DSTF" : "",
       ...study.keywords
     ].join(" ").toLowerCase();
 
@@ -907,9 +933,19 @@ function renderStudies() {
 
     card.className = "card";
 
-    card.appendChild(
+    const tags = document.createElement("div");
+
+    tags.appendChild(
       makeElement("span", study.category, "tag")
     );
+
+    if (study.dstf) {
+      tags.appendChild(
+        makeElement("span", "DSTF", "dstf-tag")
+      );
+    }
+
+    card.appendChild(tags);
 
     card.appendChild(
       makeElement("h3", study.title)
@@ -978,6 +1014,15 @@ function showDetails(study) {
   content.appendChild(
     makeElement("p", "Category: " + study.category)
   );
+
+  if (study.dstf) {
+    content.appendChild(
+      makeElement(
+        "p",
+        "Research Event: Division Science and Technology Fair (DSTF)"
+      )
+    );
+  }
 
   content.appendChild(
     makeElement("h3", "Abstract")
