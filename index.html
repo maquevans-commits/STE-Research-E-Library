@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>STE Research E-Library | DEIHS</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,20 +15,15 @@
   --navy: #102b46;
   --teal: #087e83;
   --teal-dark: #06666a;
-  --gold: #e7ae30;
   --light: #edf7f8;
   --background: #f5f8fb;
   --muted: #64748b;
   --border: #e2e8f0;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -39,8 +33,92 @@ body {
   line-height: 1.6;
 }
 
-button, input, select {
-  font: inherit;
+button, input, select { font: inherit; }
+
+/* LOGIN SCREEN */
+
+#loginScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #102b46, #087e83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-box {
+  background: white;
+  width: 100%;
+  max-width: 410px;
+  padding: 35px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 15px 45px #0003;
+}
+
+.login-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-box h1 {
+  font-size: 22px;
+  margin: 0 0 8px;
+}
+
+.login-box p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.login-box form {
+  margin-top: 25px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.login-box input:focus {
+  outline: 2px solid var(--teal);
+}
+
+.login-box button {
+  width: 100%;
+  background: var(--teal);
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: var(--teal-dark);
+}
+
+#loginError {
+  color: #b91c1c;
+  min-height: 20px;
+  font-size: 12px;
+}
+
+.login-note {
+  font-size: 11px !important;
+  margin-top: 20px;
+}
+
+/* WEBSITE VISIBILITY */
+
+#website {
+  display: none;
 }
 
 /* HEADER */
@@ -69,31 +147,47 @@ header {
   opacity: 0.85;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 20px;
 }
 
 nav a {
   color: white;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 500;
 }
 
 nav a:hover {
   color: #9de2e2;
 }
 
+.logout-btn {
+  background: transparent;
+  border: 1px solid #ffffff90;
+  border-radius: 7px;
+  color: white;
+  padding: 8px 13px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #ffffff20;
+}
+
 /* BANNER */
 
 .hero {
-  background: linear-gradient(
-    180deg,
-    #eaf3fa 0%,
-    #f5f8fb 100%
-  );
+  background: linear-gradient(180deg, #eaf3fa, #f5f8fb);
   padding: 22px 5% 30px;
   text-align: center;
 }
@@ -102,22 +196,16 @@ nav a:hover {
   display: block;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: auto;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 25px #102b4620;
-  transition: transform 0.2s ease;
-}
-
-.banner-link:hover {
-  transform: translateY(-2px);
 }
 
 .banner-image {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
 }
 
 /* SECTIONS */
@@ -129,7 +217,6 @@ section:not(.hero) {
 .section-title {
   font-size: 25px;
   font-weight: 700;
-  letter-spacing: -0.5px;
   margin: 0 0 8px;
 }
 
@@ -139,11 +226,11 @@ section:not(.hero) {
   margin: 0 0 20px;
 }
 
-/* ABOUT */
-
 #about p {
   font-size: 14px;
 }
+
+/* STATISTICS */
 
 .stats {
   display: grid;
@@ -164,7 +251,6 @@ section:not(.hero) {
   display: block;
   font-size: 26px;
   color: var(--teal);
-  font-weight: 700;
 }
 
 .stat span {
@@ -189,29 +275,31 @@ section:not(.hero) {
 .filters select {
   width: 100%;
   min-width: 0;
-  background: white;
   padding: 13px 15px;
+  background: white;
   border: 1px solid #d9e2ec;
   border-radius: 9px;
   font-size: 13px;
   color: var(--navy);
-  outline: none;
 }
 
 .filters input:focus,
 .filters select:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 3px #087e8315;
+  outline: 2px solid var(--teal);
+}
+
+.library-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 16px;
 }
 
 /* RESEARCH CARDS */
 
 .cards {
   display: grid;
-  grid-template-columns:
-    repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
-  align-items: stretch;
 }
 
 .card {
@@ -233,7 +321,6 @@ section:not(.hero) {
 
 .tag {
   display: inline-block;
-  align-self: flex-start;
   background: #e9f6f6;
   color: #087579;
   padding: 6px 11px;
@@ -255,7 +342,6 @@ section:not(.hero) {
 
 .card h3 {
   font-size: 15px;
-  font-weight: 600;
   line-height: 1.55;
   margin: 16px 0 13px;
   overflow-wrap: anywhere;
@@ -264,12 +350,11 @@ section:not(.hero) {
 .card .meta {
   font-size: 12px;
   color: var(--muted);
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 }
 
 .card-bottom {
   margin-top: auto;
-  padding-top: 12px;
 }
 
 .btn {
@@ -289,18 +374,11 @@ section:not(.hero) {
   background: var(--teal-dark);
 }
 
-.library-count {
-  font-size: 12px;
-  color: var(--muted);
-  margin: 0 0 16px;
-}
-
 #empty {
   display: none;
   text-align: center;
   color: var(--muted);
   padding: 30px;
-  font-size: 14px;
 }
 
 /* SUBMISSION */
@@ -316,15 +394,6 @@ section:not(.hero) {
   font-size: 14px;
 }
 
-.submit-section .btn {
-  font-size: 13px;
-  padding: 13px 22px;
-}
-
-.meta {
-  color: var(--muted);
-}
-
 /* FOOTER */
 
 footer {
@@ -334,16 +403,11 @@ footer {
   padding: 30px 15px;
 }
 
-footer strong {
-  font-size: 15px;
-}
-
-footer p,
-footer small {
+footer p, footer small {
   font-size: 12px;
 }
 
-/* RESEARCH DETAILS */
+/* DETAILS POPUP */
 
 dialog {
   border: none;
@@ -362,20 +426,11 @@ dialog::backdrop {
 dialog h2 {
   font-size: 20px;
   line-height: 1.45;
-  padding-right: 20px;
-}
-
-dialog h3 {
-  font-size: 15px;
 }
 
 dialog p {
   font-size: 13px;
   color: #475569;
-}
-
-dialog .btn {
-  margin-top: 10px;
 }
 
 .close {
@@ -387,7 +442,7 @@ dialog .btn {
   color: var(--muted);
 }
 
-/* TABLET */
+/* MOBILE */
 
 @media (max-width: 850px) {
   .filters {
@@ -397,14 +452,7 @@ dialog .btn {
   #search {
     grid-column: 1 / -1;
   }
-
-  .cards {
-    grid-template-columns:
-      repeat(auto-fill, minmax(240px, 1fr));
-  }
 }
-
-/* MOBILE */
 
 @media (max-width: 600px) {
   header {
@@ -413,17 +461,8 @@ dialog .btn {
     text-align: center;
   }
 
-  .brand {
-    font-size: 16px;
-  }
-
-  nav {
+  .header-actions, nav {
     justify-content: center;
-    gap: 18px;
-  }
-
-  nav a {
-    font-size: 12px;
   }
 
   section:not(.hero) {
@@ -438,22 +477,12 @@ dialog .btn {
     font-size: 21px;
   }
 
-  .stats {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .filters {
+  .stats, .filters, .cards {
     grid-template-columns: 1fr;
   }
 
   #search {
     grid-column: auto;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 14px;
   }
 
   .card {
@@ -469,18 +498,78 @@ dialog .btn {
 
 <body>
 
+<!-- LOGIN SCREEN -->
+
+<div id="loginScreen">
+  <div class="login-box">
+
+    <div class="login-icon">🎓</div>
+
+    <h1>STE Research E-Library</h1>
+
+    <p>Dasmariñas East Integrated High School</p>
+
+    <p>Welcome! Please log in to continue.</p>
+
+    <form id="loginForm">
+
+      <input
+        type="text"
+        id="loginUsername"
+        placeholder="Username"
+        autocomplete="username"
+        aria-label="Username"
+        required
+      >
+
+      <input
+        type="password"
+        id="loginPassword"
+        placeholder="Password"
+        autocomplete="current-password"
+        aria-label="Password"
+        required
+      >
+
+      <button type="submit">Log In</button>
+
+      <p id="loginError" role="alert"></p>
+
+    </form>
+
+    <p class="login-note">
+      For authorized DEIHS students and teachers.
+    </p>
+
+  </div>
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<div id="website">
+
 <header>
+
   <div class="brand">
     STE Research E-Library
     <small>Dasmariñas East Integrated High School</small>
   </div>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#library">Library</a>
-    <a href="#about">About</a>
-    <a href="#submit">Submit</a>
-  </nav>
+  <div class="header-actions">
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#library">Library</a>
+      <a href="#about">About</a>
+      <a href="#submit">Submit</a>
+    </nav>
+
+    <button class="logout-btn" id="logoutButton">
+      Log Out
+    </button>
+
+  </div>
+
 </header>
 
 <main>
@@ -488,18 +577,21 @@ dialog .btn {
 <!-- BANNER -->
 
 <section class="hero" id="home">
+
   <a
     class="banner-link"
     href="#library"
-    aria-label="Explore Research Library">
+    aria-label="Explore Research Library"
+  >
 
     <img
       class="banner-image"
       src="./research-library-banner.png"
       alt="STE Research E-Library Banner"
-      fetchpriority="high">
+    >
 
   </a>
+
 </section>
 
 <!-- ABOUT -->
@@ -542,7 +634,7 @@ dialog .btn {
 
 </section>
 
-<!-- RESEARCH LIBRARY -->
+<!-- LIBRARY -->
 
 <section id="library">
 
@@ -559,7 +651,8 @@ dialog .btn {
       id="search"
       type="search"
       placeholder="Search research studies..."
-      aria-label="Search research studies">
+      aria-label="Search research studies"
+    >
 
     <select id="category" aria-label="Research category">
       <option value="">All Categories</option>
@@ -607,11 +700,12 @@ dialog .btn {
     class="btn"
     href="https://drive.google.com/drive/folders/1PdooC4U4GZrd0-G_H_h-Czg8laF26N5p?usp=sharing"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+  >
     Open Research Submission Folder
   </a>
 
-  <p class="meta" style="margin-top:20px">
+  <p style="margin-top:20px;color:#64748b;font-size:12px">
     Follow your teacher's submission instructions.
   </p>
 
@@ -625,6 +719,8 @@ dialog .btn {
   <small>A Digital Archive of Student Scientific Studies</small>
 </footer>
 
+</div>
+
 <!-- RESEARCH DETAILS POPUP -->
 
 <dialog id="details">
@@ -632,7 +728,8 @@ dialog .btn {
   <button
     class="close"
     id="closeDialog"
-    aria-label="Close details">
+    aria-label="Close details"
+  >
     &times;
   </button>
 
@@ -642,11 +739,77 @@ dialog .btn {
 
 <script>
 
-/* RESEARCH STUDIES */
+/* LOGIN SETTINGS */
+
+const LOGIN_USERNAME = "DEIHS-RESEARCH";
+const LOGIN_PASSWORD = "Research";
+
+const loginScreen = document.getElementById("loginScreen");
+const website = document.getElementById("website");
+
+function showWebsite() {
+  loginScreen.style.display = "none";
+  website.style.display = "block";
+}
+
+function showLogin() {
+  website.style.display = "none";
+  loginScreen.style.display = "flex";
+}
+
+if (sessionStorage.getItem("deihsLogin") === "yes") {
+  showWebsite();
+} else {
+  showLogin();
+}
+
+document.getElementById("loginForm")
+  .addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const username =
+      document.getElementById("loginUsername").value.trim();
+
+    const password =
+      document.getElementById("loginPassword").value;
+
+    if (
+      username === LOGIN_USERNAME &&
+      password === LOGIN_PASSWORD
+    ) {
+
+      sessionStorage.setItem("deihsLogin", "yes");
+
+      document.getElementById("loginError").textContent = "";
+
+      showWebsite();
+
+    } else {
+
+      document.getElementById("loginError").textContent =
+        "Incorrect username or password.";
+
+    }
+
+  });
+
+document.getElementById("logoutButton")
+  .addEventListener("click", function() {
+
+    sessionStorage.removeItem("deihsLogin");
+
+    document.getElementById("loginForm").reset();
+
+    showLogin();
+
+    window.scrollTo(0, 0);
+
+  });
+
+/* RESEARCH DATA */
 
 const studies = [
-
-  /* ORIGINAL RESEARCH STUDIES */
 
   {
     id: 1,
@@ -656,7 +819,7 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     dstf: false,
-    keywords: ["lemongrass", "oregano", "candle", "mosquito", "repellent"],
+    keywords: ["lemongrass", "oregano", "candle", "mosquito"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1IMQRG8KVf7c5m8hgped2sYZTcX2X40_A/view?usp=sharing"
   },
@@ -669,7 +832,7 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     dstf: false,
-    keywords: ["coconut", "banana", "paper", "adhesive", "sustainable"],
+    keywords: ["coconut", "banana", "paper", "adhesive"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1nVnu_p7Fd6kIacqEoGNywkSGS22o5SxR/view?usp=drive_link"
   },
@@ -682,7 +845,7 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     dstf: false,
-    keywords: ["cockroach", "pineapple", "rice hulls", "turmeric", "pest control"],
+    keywords: ["cockroach", "pineapple", "rice hulls", "turmeric"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1FHx8InCkViui-JNNKfs9J-ebms03Y3bp/view?usp=drive_link"
   },
@@ -695,7 +858,7 @@ const studies = [
     program: "STE",
     category: "Engineering and Technology",
     dstf: false,
-    keywords: ["flood", "drainage", "water flow", "flood risk", "MO-Drain"],
+    keywords: ["flood", "drainage", "water flow"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1NB4dR1EvKC23nJJUGXF5Hd1DXQLD10g4/view?usp=drive_link"
   },
@@ -708,12 +871,10 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     dstf: false,
-    keywords: ["bougainvillea", "wood ash", "soil", "microbial diversity", "soil fertility"],
+    keywords: ["bougainvillea", "wood ash", "soil"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1okKqsDTdgOg7ovsT1BQj5qwICYTQTOx2/view?usp=drive_link"
   },
-
-  /* NEW DSTF RESEARCH STUDIES */
 
   {
     id: 6,
@@ -723,7 +884,7 @@ const studies = [
     program: "STE",
     category: "Agricultural Science",
     dstf: false,
-    keywords: ["strawberry", "hydroponics", "Arduino", "root-zone cooling", "agriculture"],
+    keywords: ["strawberry", "hydroponics", "Arduino", "cooling"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1yxdkXULSdgXXu_MbLggBWZSkO5UDOhET/view?usp=drive_link"
   },
@@ -736,7 +897,7 @@ const studies = [
     program: "STE",
     category: "Life Sciences",
     dstf: true,
-    keywords: ["fall armyworm", "corn", "kantutay", "Lantana camara", "pest control", "DSTF"],
+    keywords: ["armyworm", "corn", "kantutay", "pest control"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1CCLmgwN-CXtgB-_T8rMU976rLVUSpYA2/view?usp=drive_link"
   },
@@ -749,7 +910,7 @@ const studies = [
     program: "STE",
     category: "Engineering and Technology",
     dstf: true,
-    keywords: ["Earth-Wake", "piezoelectric", "solar", "earthquake", "school safety", "DSTF"],
+    keywords: ["Earth-Wake", "piezoelectric", "solar", "earthquake"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1-Yz_keHnS364KqtZt0P8xzO5Qzu6YzXP/view?usp=drive_link"
   },
@@ -762,7 +923,7 @@ const studies = [
     program: "STE",
     category: "Computational Science",
     dstf: true,
-    keywords: ["MicroCount", "STEVision", "microplastics", "drinking water", "image analysis", "DSTF"],
+    keywords: ["MicroCount", "STEVision", "microplastics", "water"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1uKNWQsKI4oHJIWEOiSQXrFew1V4PrL4U/view?usp=drive_link"
   },
@@ -775,7 +936,7 @@ const studies = [
     program: "STE",
     category: "Agricultural Science",
     dstf: true,
-    keywords: ["moringa", "rice", "seed priming", "polypropylene", "plastic stress", "DSTF"],
+    keywords: ["moringa", "rice", "seed priming", "plastic"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1yv8CB3-d7Hh-6C8mZg-U5KRA8KsuZM5R/view?usp=drive_link"
   },
@@ -788,7 +949,7 @@ const studies = [
     program: "STE",
     category: "Health and Technology",
     dstf: true,
-    keywords: ["PawTA", "animal bite", "rabies", "first aid", "application", "DSTF"],
+    keywords: ["PawTA", "animal bite", "rabies", "first aid"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1dLpzgMjfX8xVleUH4FdlQmezS7Eo6LIF/view?usp=drive_link"
   },
@@ -801,7 +962,7 @@ const studies = [
     program: "STE",
     category: "Engineering and Technology",
     dstf: true,
-    keywords: ["drone", "sensors", "AI", "plant monitoring", "farmer advisory", "DSTF"],
+    keywords: ["drone", "sensors", "AI", "plant monitoring"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1EwSdk44cRaYsu7rWzg7wFnvCxr5AHf6m/view?usp=drive_link"
   },
@@ -814,7 +975,7 @@ const studies = [
     program: "STE",
     category: "Robotics and Intelligent Machines",
     dstf: true,
-    keywords: ["ShopBot", "robot", "PWD", "supermarket", "navigation", "safety", "DSTF"],
+    keywords: ["ShopBot", "robot", "PWD", "navigation"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/15AOasYTbmX8bWEBWCd-bS0Vn8K8fAU27/view?usp=drive_link"
   },
@@ -827,14 +988,14 @@ const studies = [
     program: "STE",
     category: "Environmental Science",
     dstf: true,
-    keywords: ["VibroVerm", "Arduino", "vermicompost", "vibration", "organic fertilizer", "DSTF"],
+    keywords: ["VibroVerm", "Arduino", "vermicompost", "fertilizer"],
     abstract: "Open the research paper to read the complete study.",
     pdfUrl: "https://drive.google.com/file/d/1lCLv5t5xGMlhKYId7oucaFAaroXDY2Qv/view?usp=drive_link"
   }
 
 ];
 
-/* ELEMENTS */
+/* LIBRARY ELEMENTS */
 
 const researchList =
   document.getElementById("researchList");
@@ -851,11 +1012,10 @@ const level =
 const details =
   document.getElementById("details");
 
-/* SAFE TEXT ELEMENT */
+/* CREATE SAFE TEXT ELEMENT */
 
 function makeElement(tag, value, className) {
   const el = document.createElement(tag);
-
   el.textContent = String(value ?? "");
 
   if (className) {
@@ -874,14 +1034,10 @@ function setup() {
   ].sort();
 
   categories.forEach(name => {
-
     const option = document.createElement("option");
-
     option.value = name;
     option.textContent = name;
-
     category.appendChild(option);
-
   });
 
   document.getElementById("total").textContent =
@@ -893,12 +1049,11 @@ function setup() {
   renderStudies();
 }
 
-/* FILTER AND DISPLAY */
+/* FILTER RESEARCH */
 
 function renderStudies() {
 
-  const query =
-    search.value.toLowerCase().trim();
+  const query = search.value.toLowerCase().trim();
 
   const filtered = studies.filter(study => {
 
@@ -928,9 +1083,7 @@ function renderStudies() {
 
   filtered.forEach(study => {
 
-    const card =
-      document.createElement("article");
-
+    const card = document.createElement("article");
     card.className = "card";
 
     const tags = document.createElement("div");
@@ -959,9 +1112,7 @@ function renderStudies() {
       )
     );
 
-    const bottom =
-      document.createElement("div");
-
+    const bottom = document.createElement("div");
     bottom.className = "card-bottom";
 
     const button = makeElement(
@@ -986,7 +1137,7 @@ function renderStudies() {
     filtered.length ? "none" : "block";
 }
 
-/* DETAILS POPUP */
+/* RESEARCH DETAILS */
 
 function showDetails(study) {
 
@@ -1032,36 +1183,22 @@ function showDetails(study) {
     makeElement("p", study.abstract)
   );
 
-  if (study.pdfUrl) {
+  const link = makeElement(
+    "a",
+    "Read Research PDF",
+    "btn"
+  );
 
-    const link = makeElement(
-      "a",
-      "Read Research PDF",
-      "btn"
-    );
+  link.href = study.pdfUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
 
-    link.href = study.pdfUrl;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-
-    content.appendChild(link);
-
-  } else {
-
-    content.appendChild(
-      makeElement(
-        "p",
-        "PDF not yet available.",
-        "meta"
-      )
-    );
-
-  }
+  content.appendChild(link);
 
   details.showModal();
 }
 
-/* EVENTS */
+/* EVENT LISTENERS */
 
 search.addEventListener("input", renderStudies);
 
@@ -1073,11 +1210,9 @@ document.getElementById("closeDialog")
   .addEventListener("click", () => details.close());
 
 details.addEventListener("click", event => {
-
   if (event.target === details) {
     details.close();
   }
-
 });
 
 setup();
